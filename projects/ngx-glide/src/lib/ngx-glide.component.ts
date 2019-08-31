@@ -85,7 +85,7 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (isPlatformBrowser(this.platformId) && changes) {
+    if (isPlatformBrowser(this.platformId) && changes && this.glide) {
       this.updateGlideBullets();
       this.update(this.getGlideSettings());
     }
