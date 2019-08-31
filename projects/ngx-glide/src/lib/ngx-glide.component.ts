@@ -2,11 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'ngx-glide',
-  template: `
-    <p>
-      ngx-glide works!
-    </p>
-  `,
-  styles: []
+  templateUrl: './ngx-glide.component.html'
 })
 export class NgxGlideComponent { }
