@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ngx-glide-ngx-glide',
+  selector: 'ngx-glide',
   template: `
     <p>
       ngx-glide works!
