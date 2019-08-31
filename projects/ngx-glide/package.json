@@ -4,7 +4,8 @@
   "description": "Angular wrapper component of Glide carousel library",
   "peerDependencies": {
     "@angular/common": "^8.2.4",
-    "@angular/core": "^8.2.4"
+    "@angular/core": "^8.2.4",
+    "@glidejs/glide": "^3.3.0"
   },
   "repository": {
     "type": "git",
