@@ -1,2 +1,5 @@
 @import "~@glidejs/glide/src/assets/sass/glide.core";
 @import "~@glidejs/glide/src/assets/sass/glide.theme";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
