@@ -1,0 +1,20 @@
+.backdrops {
+  position: relative;
+  height: 500px;
+  width: 100%;
+
+  .backdrop {
+    height: 100%;
+    width: 100%;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .spinner {
+    margin: auto auto;
+  }
+}

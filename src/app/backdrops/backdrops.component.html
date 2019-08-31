@@ -1,0 +1,12 @@
+<div class="backdrops">
+  <ng-container *ngIf="backdrops">
+    <ngx-glide [perView]="3">
+      <div class="backdrop" *ngFor="let backdrop of backdrops">
+        <img [src]="backdrop + 1 | img:'jpeg':'backdrops'">
+      </div>
+    </ngx-glide>
+  </ng-container>
+  <ng-container *ngIf="isLoading">
+    <mat-spinner class="spinner"></mat-spinner>
+  </ng-container>
+</div>
