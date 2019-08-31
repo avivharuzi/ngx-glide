@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
+
 import { NgxGlideComponent } from './ngx-glide.component';
-
-
 
 @NgModule({
   declarations: [NgxGlideComponent],

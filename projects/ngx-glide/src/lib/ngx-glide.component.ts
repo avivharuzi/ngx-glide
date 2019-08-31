@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'ngx-glide',
@@ -9,11 +9,4 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: []
 })
-export class NgxGlideComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class NgxGlideComponent { }
