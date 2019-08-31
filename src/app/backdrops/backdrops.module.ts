@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { NgxGlideModule } from 'ngx-glide';
 
@@ -14,6 +15,7 @@ import { BackdropsComponent } from './backdrops.component';
   imports: [
     CommonModule,
     MatProgressSpinnerModule,
+    MatDividerModule,
     NgxGlideModule,
     SharedModule
   ],
