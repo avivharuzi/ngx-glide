@@ -1,6 +1,6 @@
-import { Option } from './option.interface';
+import { Settings } from './settings.interface';
 
-export const DEFAULTS: Option = {
+export const defaultSettings: Settings = {
   type: 'slider',
   startAt: 0,
   perView: 1,

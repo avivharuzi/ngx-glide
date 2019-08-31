@@ -1,4 +1,4 @@
-export interface Option {
+export interface Settings {
   type: string;
   startAt: number;
   perView: number;
