@@ -7,7 +7,12 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start:lib": "ng build ngx-glide --watch",
+    "build:lib": "ng build ngx-glide",
+    "test:lib": "ng test ngx-glide",
+    "lint:lib": "ng lint ngx-glide",
+    "publish:lib": "npm run build:lib && cp README.md dist/ngx-glide && cd dist/ngx-glide && npm publish"
   },
   "private": true,
   "dependencies": {
