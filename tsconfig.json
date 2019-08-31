@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-glide": [
+        "dist/ngx-glide"
+      ],
+      "ngx-glide/*": [
+        "dist/ngx-glide/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

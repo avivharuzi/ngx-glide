@@ -124,6 +124,41 @@
           }
         }
       }
+    },
+    "ngx-glide": {
+      "projectType": "library",
+      "root": "projects/ngx-glide",
+      "sourceRoot": "projects/ngx-glide/src",
+      "prefix": "ngx-glide",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-glide/tsconfig.lib.json",
+            "project": "projects/ngx-glide/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-glide/src/test.ts",
+            "tsConfig": "projects/ngx-glide/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-glide/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-glide/tsconfig.lib.json",
+              "projects/ngx-glide/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "ngx-glide-app"
 }
