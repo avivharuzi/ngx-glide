@@ -4,17 +4,13 @@
       <ng-content></ng-content>
     </div>
   </div>
-  <ng-container *ngIf="showArrows">
-    <div class="glide__arrows" data-glide-el="controls">
-      <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{{ arrowLeftLabel }}</button>
-      <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{{ arrowRightLabel }}</button>
-    </div>
-  </ng-container>
-  <ng-container *ngIf="showBullets">
-    <div class="glide__bullets" data-glide-el="controls[nav]">
-      <ng-container *ngIf="glideBullets">
-        <button class="glide__bullet" *ngFor="let glideBullet of glideBullets" [attr.data-glide-dir]="'=' + glideBullet"></button>
-      </ng-container>
-    </div>
-  </ng-container>
+  <div class="glide__arrows" data-glide-el="controls" [style.display]="showArrows ? 'block' : 'none'">
+    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">{{ arrowLeftLabel }}</button>
+    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">{{ arrowRightLabel }}</button>
+  </div>
+  <div class="glide__bullets" data-glide-el="controls[nav]" [style.display]="showBullets ? 'block' : 'none'">
+    <ng-container *ngIf="glideBullets">
+      <button class="glide__bullet" *ngFor="let glideBullet of glideBullets" [attr.data-glide-dir]="'=' + glideBullet"></button>
+    </ng-container>
+  </div>
 </div>
