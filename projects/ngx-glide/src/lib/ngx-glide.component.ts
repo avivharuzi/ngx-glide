@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, OnChanges, AfterViewInit, OnDestroy, Input, ViewChild, ElementRef,
-  ChangeDetectorRef, Inject, PLATFORM_ID, SimpleChanges } from '@angular/core';
+  ChangeDetectorRef, Inject, PLATFORM_ID, SimpleChanges, SimpleChange } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 import Glide from '@glidejs/glide';
@@ -87,14 +87,14 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
   ngOnChanges(changes: SimpleChanges) {
     if (isPlatformBrowser(this.platformId) && changes && this.glide) {
       this.updateGlideBullets();
-      this.update(this.getGlideSettings());
+      this.update(this.getGlideUpdateSettings(changes));
     }
   }
 
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
       this.updateGlideBullets();
-      this.glide = new Glide(this.glideEl.nativeElement, this.getGlideSettings()).mount();
+      this.glide = new Glide(this.glideEl.nativeElement, this.getGlideInitSettings()).mount();
       this.changeDetectorRef.detectChanges();
     }
   }
@@ -133,7 +133,7 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
     }
   }
 
-  update(settings: Settings): void {
+  update(settings: object): void {
     if (this.glide) {
       this.glide.update(settings);
       this.changeDetectorRef.detectChanges();
@@ -193,7 +193,29 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
     this.changeDetectorRef.detectChanges();
   }
 
-  private getGlideSettings(): Settings {
+  private getGlideUpdateSettings(changes: SimpleChanges): object {
+    const settings = {};
+
+    for (const key in changes) {
+      if (!changes.hasOwnProperty(key)) {
+        continue;
+      }
+
+      if (!defaultSettings.hasOwnProperty(key)) {
+        continue;
+      }
+
+      const change: SimpleChange = changes[key];
+
+      if (change.previousValue !== change.currentValue) {
+        settings[key] = change.currentValue;
+      }
+    }
+
+    return settings;
+  }
+
+  private getGlideInitSettings(): Settings {
     return {
       type: this.type,
       startAt: this.startAt,
