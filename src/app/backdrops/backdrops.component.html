@@ -1,7 +1,14 @@
 <ng-container>
   <div class="backdrops">
     <ng-container *ngIf="backdrops">
-      <ngx-glide [perView]="3">
+      <ngx-glide [showArrows]="showArrows" [showBullets]="showBullets" [arrowLeftLabel]="arrowLeftLabel"
+        [arrowRightLabel]="arrowRightLabel" [type]="type" [startAt]="startAt" [perView]="perView"
+        [focusAt]="isCenter ? 'center' : focusAt" [gap]="gap" [autoplay]="isAutoplay ? autoplay : false"
+        [hoverpause]="hoverpause" [keyboard]="keyboard" [bound]="bound"
+        [swipeThreshold]="isSwipeThreshold ? swipeThreshold : false"
+        [dragThreshold]="isDragThreshold ? dragThreshold : false" [perTouch]="isPerTouch ? perTouch : false"
+        [touchRatio]="touchRatio" [touchAngle]="touchAngle" [animationDuration]="animationDuration" [rewind]="rewind"
+        [rewindDuration]="rewindDuration" [animationTimingFunc]="animationTimingFunc" [direction]="direction">
         <div class="backdrop" *ngFor="let backdrop of backdrops">
           <img [src]="backdrop + 1 | img:'jpeg':'backdrops'">
         </div>
@@ -13,6 +20,176 @@
   </div>
 
   <div *ngIf="!isLoading">
-    <mat-divider></mat-divider>
+    <mat-divider class="divider"></mat-divider>
+
+    <div class="edit-backdrops">
+      <div class="edit-backdrop">
+        <mat-slide-toggle [checked]="showArrows" [(ngModel)]="showArrows">showArrows
+        </mat-slide-toggle>
+      </div>
+      <div class="edit-backdrop">
+        <mat-slide-toggle [checked]="showBullets" [(ngModel)]="showBullets">showBullets</mat-slide-toggle>
+      </div>
+      <div class="edit-backdrop">
+        <mat-form-field>
+          <input matInput placeholder="arrowLeftLabel" [(ngModel)]="arrowLeftLabel">
+        </mat-form-field>
+      </div>
+      <div class="edit-backdrop">
+        <mat-form-field>
+          <input matInput placeholder="arrowRightLabel" [(ngModel)]="arrowRightLabel">
+        </mat-form-field>
+      </div>
+      <div class="edit-backdrop">
+        <mat-form-field>
+          <mat-label>type</mat-label>
+          <mat-select name="type" [(ngModel)]="type">
+            <mat-option value="slider">
+              slider
+            </mat-option>
+            <mat-option value="carousel">
+              carousel
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="edit-backdrop">
+        <mat-form-field>
+          <input matInput type="number" placeholder="startAt" min="0" [max]="backdrops.length - 1"
+            [(ngModel)]="startAt">
+        </mat-form-field>
+      </div>
+      <div class="edit-backdrop">
+        <mat-form-field>
+          <input matInput type="number" placeholder="perView" min="1" [max]="backdrops.length" [(ngModel)]="perView">
+        </mat-form-field>
+      </div>
+      <div class="edit-backdrop">
+        <mat-checkbox [(ngModel)]="isCenter">
+          center
+        </mat-checkbox>
+        <mat-form-field>
+          <input matInput type="number" placeholder="focusAt" min="0" [max]="perView - 1" [disabled]="isCenter"
+            [(ngModel)]="focusAt">
+        </mat-form-field>
+      </div>
+      <div class="edit-backdrop">
+        <mat-form-field>
+          <input matInput type="number" placeholder="gap" min="0" step="10" [(ngModel)]="gap">
+        </mat-form-field>
+      </div>
+      <div class="edit-backdrop">
+        <mat-slide-toggle [checked]="isAutoplay" [(ngModel)]="isAutoplay">autoplay
+        </mat-slide-toggle>
+        <mat-form-field>
+          <input matInput type="number" placeholder="autoplay" min="0" step="1000" [disabled]="!isAutoplay"
+            [(ngModel)]="autoplay">
+        </mat-form-field>
+      </div>
+      <div class="edit-backdrop">
+        <mat-checkbox [(ngModel)]="hoverpause">
+          hoverpause
+        </mat-checkbox>
+      </div>
+      <div class="edit-backdrop">
+        <mat-checkbox [(ngModel)]="keyboard">
+          keyboard
+        </mat-checkbox>
+      </div>
+      <div class="edit-backdrop">
+        <mat-checkbox [(ngModel)]="bound">
+          bound
+        </mat-checkbox>
+      </div>
+      <div class="edit-backdrop">
+        <mat-slide-toggle [checked]="isSwipeThreshold" [(ngModel)]="isSwipeThreshold">swipeThreshold
+        </mat-slide-toggle>
+        <mat-form-field>
+          <input matInput type="number" placeholder="swipeThreshold" min="0" step="10" [disabled]="!isSwipeThreshold"
+            [(ngModel)]="swipeThreshold">
+        </mat-form-field>
+      </div>
+      <div class="edit-backdrop">
+        <mat-slide-toggle [checked]="isDragThreshold" [(ngModel)]="isDragThreshold">dragThreshold
+        </mat-slide-toggle>
+        <mat-form-field>
+          <input matInput type="number" placeholder="dragThreshold" min="0" step="10" [disabled]="!isDragThreshold"
+            [(ngModel)]="dragThreshold">
+        </mat-form-field>
+      </div>
+      <div class="edit-backdrop">
+        <mat-slide-toggle [checked]="isPerTouch" [(ngModel)]="isPerTouch">perTouch
+        </mat-slide-toggle>
+        <mat-form-field>
+          <input matInput type="number" placeholder="perTouch" min="0" max="5" [disabled]="!isPerTouch"
+            [(ngModel)]="perTouch">
+        </mat-form-field>
+      </div>
+      <div class="edit-backdrop">
+        <mat-form-field>
+          <input matInput type="number" placeholder="touchRatio" min="0.1" max="1" step="0.1" [(ngModel)]="touchRatio">
+        </mat-form-field>
+      </div>
+      <div class="edit-backdrop">
+        <mat-form-field>
+          <input matInput type="number" placeholder="touchAngle" min="0" max="90" step="5" [(ngModel)]="touchAngle">
+        </mat-form-field>
+      </div>
+      <div class="edit-backdrop">
+        <mat-form-field>
+          <input matInput type="number" placeholder="animationDuration" min="100" max="4000" step="100"
+            [(ngModel)]="animationDuration">
+        </mat-form-field>
+      </div>
+      <div class="edit-backdrop">
+        <mat-checkbox [(ngModel)]="rewind">
+          rewind
+        </mat-checkbox>
+      </div>
+      <div class="edit-backdrop">
+        <mat-form-field>
+          <input matInput type="number" placeholder="rewindDuration" min="100" max="4000" step="100"
+            [(ngModel)]="rewindDuration">
+        </mat-form-field>
+      </div>
+      <div class="edit-backdrop">
+        <mat-form-field>
+          <mat-label>animationTimingFunc</mat-label>
+          <mat-select name="animationTimingFunc" [(ngModel)]="animationTimingFunc">
+            <mat-option value="linear">
+              linear
+            </mat-option>
+            <mat-option value="ease">
+              ease
+            </mat-option>
+            <mat-option value="ease-in">
+              ease-in
+            </mat-option>
+            <mat-option value="ease-out">
+              ease-out
+            </mat-option>
+            <mat-option value="ease-in-out">
+              ease-in-out
+            </mat-option>
+            <mat-option value="cubic-bezier(0.680, -0.550, 0.265, 1.550)">
+              bounce
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="edit-backdrop">
+        <mat-form-field>
+          <mat-label>direction</mat-label>
+          <mat-select name="direction" [(ngModel)]="direction">
+            <mat-option value="ltr">
+              ltr
+            </mat-option>
+            <mat-option value="rtl">
+              rtl
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
   </div>
 </ng-container>
