@@ -86,14 +86,13 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges) {
     if (isPlatformBrowser(this.platformId) && changes && this.glide) {
-      this.updateGlideBullets();
       this.update(this.getGlideUpdateSettings(changes));
     }
   }
 
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
-      this.updateGlideBullets();
+      this.initGlideBullets();
       this.glide = new Glide(this.glideEl.nativeElement, this.getGlideInitSettings()).mount();
       this.changeDetectorRef.detectChanges();
     }
@@ -186,7 +185,7 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
     }
   }
 
-  private updateGlideBullets(): void {
+  private initGlideBullets(): void {
     const glideSlidesNativeElement: HTMLElement = this.glideSlidesEl.nativeElement;
     const childrenLength: number = glideSlidesNativeElement.children.length;
     this.glideBullets = [...new Array(childrenLength).keys()];
