@@ -1,6 +1,6 @@
 <ng-container>
   <div class="backdrops">
-    <ng-container *ngIf="backdrops">
+    <ng-container *ngIf="backdrops && backdrops.length">
       <ngx-glide [showArrows]="showArrows" [showBullets]="showBullets" [arrowLeftLabel]="arrowLeftLabel"
         [arrowRightLabel]="arrowRightLabel" [type]="type" [startAt]="startAt" [perView]="perView"
         [focusAt]="isCenter ? 'center' : focusAt" [gap]="gap" [autoplay]="isAutoplay ? autoplay : false"
@@ -189,6 +189,9 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+      </div>
+      <div class="edit-backdrop">
+        <button mat-raised-button color="primary" (click)="reset()">RESET</button>
       </div>
     </div>
   </div>

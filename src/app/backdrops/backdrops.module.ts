@@ -8,6 +8,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
 
 import { NgxGlideModule } from 'ngx-glide';
 
@@ -26,6 +27,7 @@ import { BackdropsComponent } from './backdrops.component';
     MatInputModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatButtonModule,
     NgxGlideModule,
     SharedModule
   ],

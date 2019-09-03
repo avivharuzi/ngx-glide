@@ -42,6 +42,8 @@ export class BackdropsComponent implements OnInit {
   isPerTouch: boolean;
 
   constructor() {
+    this.isLoading = true;
+    this.backdrops = [];
     this.reset();
   }
 
@@ -53,7 +55,6 @@ export class BackdropsComponent implements OnInit {
   }
 
   reset(): void {
-    this.isLoading = true;
     this.showArrows = true;
     this.showBullets = true;
     this.arrowLeftLabel = 'left';
