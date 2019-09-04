@@ -3,4 +3,5 @@ export interface ExtraSettings {
   showBullets: boolean;
   arrowLeftLabel: string;
   arrowRightLabel: string;
+  listenToEvents: boolean;
 }
