@@ -12,7 +12,8 @@
     "build:lib": "ng build ngx-glide",
     "test:lib": "ng test ngx-glide",
     "lint:lib": "ng lint ngx-glide",
-    "publish:lib": "npm run build:lib && cp README.md dist/ngx-glide && cp LICENSE dist/ngx-glide && cd dist/ngx-glide && npm publish"
+    "copy:lib": "cp README.md dist/ngx-glide && cp LICENSE dist/ngx-glide",
+    "publish:lib": "npm run build:lib && npm run copy:lib && cd dist/ngx-glide && npm publish"
   },
   "private": true,
   "dependencies": {
