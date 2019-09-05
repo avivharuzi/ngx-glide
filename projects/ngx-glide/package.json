@@ -15,6 +15,7 @@
     "angular",
     "library",
     "glide",
+    "slider",
     "carousel"
   ],
   "author": "Aviv Haruzi <avivharuzi@gmail.com>",
