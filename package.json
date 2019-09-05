@@ -13,7 +13,9 @@
     "test:lib": "ng test ngx-glide",
     "lint:lib": "ng lint ngx-glide",
     "copy:lib": "cp README.md dist/ngx-glide && cp LICENSE dist/ngx-glide",
-    "publish:lib": "npm run build:lib && npm run copy:lib && cd dist/ngx-glide && npm publish"
+    "publish:lib": "npm run build:lib && npm run copy:lib && cd dist/ngx-glide && npm publish",
+    "dev": "concurrently \"npm:start:lib\" \"npm:start\"",
+    "prod": "npm run build --prod"
   },
   "private": true,
   "dependencies": {
@@ -39,10 +41,11 @@
     "@angular/cli": "~8.3.2",
     "@angular/compiler-cli": "~8.2.4",
     "@angular/language-service": "~8.2.4",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "concurrently": "^4.1.2",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
