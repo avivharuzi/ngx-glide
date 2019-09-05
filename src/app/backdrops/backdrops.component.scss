@@ -41,3 +41,14 @@
     }
   }
 }
+
+.monitor {
+  width: 50%;
+  margin: auto auto;
+  height: 500px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #777;
+  padding: 32px;
+  border-radius: 4px;
+}

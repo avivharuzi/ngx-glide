@@ -40,11 +40,13 @@ export class BackdropsComponent implements OnInit {
   isSwipeThreshold: boolean;
   isDragThreshold: boolean;
   isPerTouch: boolean;
+  logs: { event: string, data?: object }[];
 
   constructor() {
     this.isLoading = true;
     this.backdrops = [];
     this.reset();
+    this.logs = [];
   }
 
   ngOnInit() {
@@ -83,5 +85,85 @@ export class BackdropsComponent implements OnInit {
     this.rewindDuration = 800;
     this.animationTimingFunc = 'cubic-bezier(0.165, 0.840, 0.440, 1.000)';
     this.direction = 'ltr';
+  }
+
+  onMountedBefore(): void {
+    this.logs.push({ event: 'mountedBefore' });
+  }
+
+  onMountedAfter(): void {
+    this.logs.push({ event: 'mountedAfter' });
+  }
+
+  onUpdated(): void {
+    this.logs.push({ event: 'updated' });
+  }
+
+  onPlayed(): void {
+    this.logs.push({ event: 'played' });
+  }
+
+  onPaused(): void {
+    this.logs.push({ event: 'paused' });
+  }
+
+  onBuildedBefore(): void {
+    this.logs.push({ event: 'buildedBefore' });
+  }
+
+  onBuildedAfter(): void {
+    this.logs.push({ event: 'buildedAfter' });
+  }
+
+  onRanBefore(move: object): void {
+    this.logs.push({ event: 'ranBefore', data: move });
+  }
+
+  onRan(move: object): void {
+    this.logs.push({ event: 'ran', data: move });
+  }
+
+  onRanAfter(move: object): void {
+    this.logs.push({ event: 'ranAfter', data: move });
+  }
+
+  onRunOffseted(move: object): void {
+    this.logs.push({ event: 'runOffseted', data: move });
+  }
+
+  onRunStarted(move: object): void {
+    this.logs.push({ event: 'runStarted', data: move });
+  }
+
+  onRunEnded(move: object): void {
+    this.logs.push({ event: 'runEnded', data: move });
+  }
+
+  onMoved(movement: object): void {
+    this.logs.push({ event: 'moved', data: movement });
+  }
+
+  onMovedAfter(movement: object): void {
+    this.logs.push({ event: 'movedAfter', data: movement });
+  }
+
+  onResized(): void {
+    this.logs.push({ event: 'resized' });
+  }
+
+  onSwipeStarted(): void {
+    this.logs.push({ event: 'swipeStarted' });
+  }
+
+  onSwipeMoved(): void {
+    this.logs.push({ event: 'swipeMoved' });
+  }
+
+  onSwipeEnded(): void {
+    this.logs.push({ event: 'swipeEnded' });
+  }
+
+  onTranslateJumped(movement: object): void {
+    this.logs.push({ event: 'translateJumped', data: movement });
   }
 }

@@ -8,7 +8,14 @@
         [swipeThreshold]="isSwipeThreshold ? swipeThreshold : false"
         [dragThreshold]="isDragThreshold ? dragThreshold : false" [perTouch]="isPerTouch ? perTouch : false"
         [touchRatio]="touchRatio" [touchAngle]="touchAngle" [animationDuration]="animationDuration" [rewind]="rewind"
-        [rewindDuration]="rewindDuration" [animationTimingFunc]="animationTimingFunc" [direction]="direction">
+        [rewindDuration]="rewindDuration" [animationTimingFunc]="animationTimingFunc" [direction]="direction"
+        [listenToEvents]="true" (mountedBefore)="onMountedBefore()" (mountedAfter)="onMountedAfter()"
+        (updated)="onUpdated()" (played)="onPlayed()" (paused)="onPaused()" (buildedBefore)="onBuildedBefore()"
+        (buildedAfter)="onBuildedAfter()" (ranBefore)="onRanBefore($event)" (ran)="onRan($event)"
+        (ranAfter)="onRanAfter($event)" (runOffseted)="onRunOffseted($event)" (runStarted)="onRunStarted($event)"
+        (runEnded)="onRunEnded($event)" (moved)="onMoved($event)" (movedAfter)="onMovedAfter($event)"
+        (resized)="onResized()" (swipeStarted)="onSwipeStarted()" (swipeMoved)="onSwipeMoved()"
+        (swipeEnded)="onSwipeEnded()" (translateJumped)="onTranslateJumped($event)">
         <div class="backdrop" *ngFor="let backdrop of backdrops">
           <img [src]="backdrop + 1 | img:'jpeg':'backdrops'">
         </div>
@@ -193,6 +200,17 @@
       <div class="edit-backdrop">
         <button mat-raised-button color="primary" (click)="reset()">RESET</button>
       </div>
+    </div>
+
+    <mat-divider class="divider"></mat-divider>
+
+    <div class="monitor mat-elevation-z6">
+      <ng-container *ngIf="logs && logs.length">
+        <ng-container *ngFor="let log of logs">
+          <b>{{ log.event }}</b> Fired 🔥<span *ngIf="log.data">, data: {{ log.data | json }}</span>
+          <br>
+        </ng-container>
+      </ng-container>
     </div>
   </div>
 </ng-container>
