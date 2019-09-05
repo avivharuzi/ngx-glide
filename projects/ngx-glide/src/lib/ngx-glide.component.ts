@@ -59,13 +59,13 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
   @Output() private runOffseted: EventEmitter<object>;
   @Output() private runStarted: EventEmitter<object>;
   @Output() private runEnded: EventEmitter<object>;
-  @Output() private moved: EventEmitter<number>;
-  @Output() private movedAfter: EventEmitter<number>;
+  @Output() private moved: EventEmitter<object>;
+  @Output() private movedAfter: EventEmitter<object>;
   @Output() private resized: EventEmitter<void>;
   @Output() private swipeStarted: EventEmitter<void>;
   @Output() private swipeMoved: EventEmitter<void>;
   @Output() private swipeEnded: EventEmitter<void>;
-  @Output() private translateJumped: EventEmitter<number>;
+  @Output() private translateJumped: EventEmitter<object>;
 
   @ViewChild('glideEl', { static: false }) private glideEl: ElementRef;
   @ViewChild('glideSlidesEl', { static: false }) private glideSlidesEl: ElementRef;
@@ -119,13 +119,13 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
     this.runOffseted = new EventEmitter<object>();
     this.runStarted = new EventEmitter<object>();
     this.runEnded = new EventEmitter<object>();
-    this.moved = new EventEmitter<number>();
-    this.movedAfter = new EventEmitter<number>();
+    this.moved = new EventEmitter<object>();
+    this.movedAfter = new EventEmitter<object>();
     this.resized = new EventEmitter<void>();
     this.swipeStarted = new EventEmitter<void>();
     this.swipeMoved = new EventEmitter<void>();
     this.swipeEnded = new EventEmitter<void>();
-    this.translateJumped = new EventEmitter<number>();
+    this.translateJumped = new EventEmitter<object>();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -256,13 +256,13 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
     this.glide.on('run.offset', (move: object) => this.runOffseted.emit(move));
     this.glide.on('run.start', (move: object) => this.runStarted.emit(move));
     this.glide.on('run.end', (move: object) => this.runEnded.emit(move));
-    this.glide.on('move', (movement: number) => this.moved.emit(movement));
-    this.glide.on('move.after', (movement: number) => this.movedAfter.emit(movement));
+    this.glide.on('move', (movement: object) => this.moved.emit(movement));
+    this.glide.on('move.after', (movement: object) => this.movedAfter.emit(movement));
     this.glide.on('resize', () => this.resized.emit());
     this.glide.on('swipe.start', () => this.swipeStarted.emit());
     this.glide.on('swipe.move', () => this.swipeMoved.emit());
     this.glide.on('swipe.end', () => this.swipeEnded.emit());
-    this.glide.on('translate.jump', (movement: number) => this.translateJumped.emit(movement));
+    this.glide.on('translate.jump', (movement: object) => this.translateJumped.emit(movement));
   }
 
   private getGlideUpdateSettings(changes: SimpleChanges): object {
