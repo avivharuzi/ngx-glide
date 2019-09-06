@@ -32,7 +32,7 @@ Add scss files to the `styles` section of your `angular.json`:
 ],
 ```
 
-You can either import scss files into main scss file:
+You can either import the `styles` files into main scss file:
 
 ```scss
 @import '~@glidejs/glide/src/assets/sass/glide.core';
@@ -64,7 +64,7 @@ You can also access to the component instance directly like this:
 
 ```ts
 // Get the component instance.
-@ViewChild(NgxGlideComponent) ngxGlide: NgxGlideComponent;
+@ViewChild(NgxGlideComponent, { static: false }) ngxGlide: NgxGlideComponent;
 
 play(): void {
   this.ngxGlide.play();
