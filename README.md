@@ -10,6 +10,12 @@ Angular wrapper component of [Glide](https://glidejs.com) carousel library.
 npm i @glidejs/glide ngx-glide
 ```
 
+OR
+
+```sh
+yarn install @glidejs/glide ngx-glide
+```
+
 ## Demo
 
 [Demo page](https://avivharuzi.github.io/ngx-glide)
@@ -24,6 +30,13 @@ Add scss files to the `styles` section of your `angular.json`:
   "node_modules/@glidejs/glide/src/assets/sass/glide.core",
   "node_modules/@glidejs/glide/src/assets/sass/glide.theme"
 ],
+```
+
+You can either import scss files into main scss file:
+
+```scss
+@import '~@glidejs/glide/src/assets/sass/glide.core';
+@import '~@glidejs/glide/src/assets/sass/glide.theme';
 ```
 
 Import `NgxGlideModule` into the current module's imports:
