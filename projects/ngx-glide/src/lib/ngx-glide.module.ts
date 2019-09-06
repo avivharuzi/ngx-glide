@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import { NgxGlideComponent } from './ngx-glide.component';
 
 @NgModule({
   declarations: [NgxGlideComponent],
   imports: [
-    BrowserModule
+    CommonModule
   ],
   exports: [NgxGlideComponent]
 })
