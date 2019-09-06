@@ -127,8 +127,8 @@ export class BackdropsComponent implements OnInit {
     this.logs.push({ event: 'ranAfter', data: move });
   }
 
-  onRunOffseted(move: object): void {
-    this.logs.push({ event: 'runOffseted', data: move });
+  onRanOffset(move: object): void {
+    this.logs.push({ event: 'ranOffset', data: move });
   }
 
   onRunStarted(move: object): void {

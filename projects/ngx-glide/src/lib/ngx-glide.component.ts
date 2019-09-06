@@ -56,7 +56,7 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
   @Output() private ranBefore: EventEmitter<object>;
   @Output() private ran: EventEmitter<object>;
   @Output() private ranAfter: EventEmitter<object>;
-  @Output() private runOffseted: EventEmitter<object>;
+  @Output() private ranOffset: EventEmitter<object>;
   @Output() private runStarted: EventEmitter<object>;
   @Output() private runEnded: EventEmitter<object>;
   @Output() private moved: EventEmitter<object>;
@@ -116,7 +116,7 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
     this.ranBefore = new EventEmitter<object>();
     this.ran = new EventEmitter<object>();
     this.ranAfter = new EventEmitter<object>();
-    this.runOffseted = new EventEmitter<object>();
+    this.ranOffset = new EventEmitter<object>();
     this.runStarted = new EventEmitter<object>();
     this.runEnded = new EventEmitter<object>();
     this.moved = new EventEmitter<object>();
@@ -253,7 +253,7 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
     this.glide.on('run.before', (move: object) => this.ranBefore.emit(move));
     this.glide.on('run', (move: object) => this.ran.emit(move));
     this.glide.on('run.after', (move: object) => this.ranAfter.emit(move));
-    this.glide.on('run.offset', (move: object) => this.runOffseted.emit(move));
+    this.glide.on('run.offset', (move: object) => this.ranOffset.emit(move));
     this.glide.on('run.start', (move: object) => this.runStarted.emit(move));
     this.glide.on('run.end', (move: object) => this.runEnded.emit(move));
     this.glide.on('move', (movement: object) => this.moved.emit(movement));
