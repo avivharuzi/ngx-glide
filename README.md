@@ -7,13 +7,13 @@ Angular wrapper component of [Glide](https://glidejs.com) carousel library.
 ## Installation
 
 ```sh
-npm i @glidejs/glide ngx-glide
+npm i @glidejs/glide@3.3.0 ngx-glide
 ```
 
 OR
 
 ```sh
-yarn install @glidejs/glide ngx-glide
+yarn install @glidejs/glide@3.3.0 ngx-glide
 ```
 
 ## Demo
