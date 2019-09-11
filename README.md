@@ -2,7 +2,7 @@
 
 Angular wrapper component of [Glide](https://glidejs.com) carousel library.
 
-![npm](https://img.shields.io/npm/v/ngx-glide) ![APM](https://img.shields.io/apm/l/ngx-glide) ![npm bundle size](https://img.shields.io/bundlephobia/min/ngx-glide)
+![npm](https://img.shields.io/npm/v/ngx-glide) ![NPM](https://img.shields.io/npm/l/ngx-glide) ![npm bundle size](https://img.shields.io/bundlephobia/min/ngx-glide)
 
 ## Environment Support
 
