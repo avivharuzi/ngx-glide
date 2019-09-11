@@ -130,6 +130,10 @@ play(): void {
 | `swipeEnded`      | void       |                                    | Called right after swiping ends.                                                                                                                                           |
 | `translateJumped` | Object     |                                    | Called right before a translate applies, while we doing a jump to the first or last slide from offset movement. This event is only used when a type is set up to carousel. |
 
+## Notes
+
+Currently there is no support for adding or removing items after the view is initialized (this is because i didnt see anything like this from glide library).
+
 # License
 
 [MIT](LICENSE)
