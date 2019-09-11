@@ -31,10 +31,7 @@ export class BackdropsComponent implements OnInit {
   rewindDuration: number;
   animationTimingFunc: string;
   direction: string;
-  peek: number | object;
-  breakpoints: object;
   classes: object;
-  throttle: number;
   isCenter: boolean;
   isAutoplay: boolean;
   isSwipeThreshold: boolean;

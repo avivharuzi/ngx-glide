@@ -5,9 +5,7 @@ import { ImgPipe } from './pipes/img.pipe';
 
 @NgModule({
   declarations: [ImgPipe],
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   exports: [ImgPipe]
 })
 export class SharedModule { }

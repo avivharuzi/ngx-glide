@@ -5,9 +5,7 @@ import { NgxGlideComponent } from './ngx-glide.component';
 
 @NgModule({
   declarations: [NgxGlideComponent],
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   exports: [NgxGlideComponent]
 })
 export class NgxGlideModule { }
