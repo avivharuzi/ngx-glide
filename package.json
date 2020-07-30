@@ -10,10 +10,11 @@
     "e2e": "ng e2e",
     "start:lib": "ng build ngx-glide --watch",
     "build:lib": "ng build ngx-glide",
+    "build:lib:prod": "ng build ngx-glide --prod",
     "test:lib": "ng test ngx-glide",
     "lint:lib": "ng lint ngx-glide",
     "copy:lib": "cp README.md dist/ngx-glide && cp LICENSE dist/ngx-glide",
-    "publish:lib": "npm run build:lib && npm run copy:lib && cd dist/ngx-glide && npm publish --access public",
+    "publish:lib": "npm run build:lib:prod && npm run copy:lib && cd dist/ngx-glide && npm publish --access public",
     "publish:app": "npm run build:lib && npm run prod && angular-cli-ghpages --dir=dist/ngx-glide-app",
     "dev": "concurrently \"npm:start:lib\" \"npm:start\"",
     "prod": "ng build --prod --base-href=\"/ngx-glide/\""
