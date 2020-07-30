@@ -29,8 +29,9 @@ import { BackdropsComponent } from './backdrops.component';
     MatCheckboxModule,
     MatButtonModule,
     NgxGlideModule,
-    SharedModule
+    SharedModule,
   ],
-  exports: [BackdropsComponent]
+  exports: [BackdropsComponent],
 })
-export class BackdropsModule { }
+export class BackdropsModule {
+}

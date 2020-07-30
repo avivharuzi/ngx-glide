@@ -1,5 +1,7 @@
-import { Component, ChangeDetectionStrategy, OnChanges, AfterViewInit, OnDestroy, Input, Output,
-  EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, Inject, PLATFORM_ID, SimpleChanges, SimpleChange } from '@angular/core';
+import {
+  Component, ChangeDetectionStrategy, OnChanges, AfterViewInit, OnDestroy, Input, Output,
+  EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, Inject, PLATFORM_ID, SimpleChanges, SimpleChange,
+} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 import Glide from '@glidejs/glide';
@@ -11,7 +13,7 @@ import { Settings } from './shared/settings.interface';
 @Component({
   selector: 'ngx-glide',
   templateUrl: './ngx-glide.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
   @Input() showArrows: boolean;
@@ -74,7 +76,7 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
-    @Inject(PLATFORM_ID) private platformId: string
+    @Inject(PLATFORM_ID) private platformId: string,
   ) {
     this.showArrows = defaultExtraSettings.showArrows;
     this.showBullets = defaultExtraSettings.showBullets;
@@ -128,13 +130,13 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
     this.translateJumped = new EventEmitter<object>();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (isPlatformBrowser(this.platformId) && changes && this.glide) {
       this.update(this.getGlideUpdateSettings(changes));
     }
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.initGlideBullets();
       this.glide = new Glide(this.glideEl.nativeElement, this.getGlideInitSettings());
@@ -144,7 +146,7 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.destroy();
   }
 
@@ -311,7 +313,7 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
       peek: this.peek,
       breakpoints: this.breakpoints,
       classes: this.classes,
-      throttle: this.throttle
+      throttle: this.throttle,
     };
   }
 }

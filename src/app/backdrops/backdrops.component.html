@@ -2,20 +2,20 @@
   <div class="backdrops">
     <ng-container *ngIf="backdrops && backdrops.length">
       <ngx-glide [showArrows]="showArrows" [showBullets]="showBullets" [arrowLeftLabel]="arrowLeftLabel"
-        [arrowRightLabel]="arrowRightLabel" [type]="type" [startAt]="startAt" [perView]="perView"
-        [focusAt]="isCenter ? 'center' : focusAt" [gap]="gap" [autoplay]="isAutoplay ? autoplay : false"
-        [hoverpause]="hoverpause" [keyboard]="keyboard" [bound]="bound"
-        [swipeThreshold]="isSwipeThreshold ? swipeThreshold : false"
-        [dragThreshold]="isDragThreshold ? dragThreshold : false" [perTouch]="isPerTouch ? perTouch : false"
-        [touchRatio]="touchRatio" [touchAngle]="touchAngle" [animationDuration]="animationDuration" [rewind]="rewind"
-        [rewindDuration]="rewindDuration" [animationTimingFunc]="animationTimingFunc" [direction]="direction"
-        [listenToEvents]="true" (mountedBefore)="onMountedBefore()" (mountedAfter)="onMountedAfter()"
-        (updated)="onUpdated()" (played)="onPlayed()" (paused)="onPaused()" (buildedBefore)="onBuildedBefore()"
-        (buildedAfter)="onBuildedAfter()" (ranBefore)="onRanBefore($event)" (ran)="onRan($event)"
-        (ranAfter)="onRanAfter($event)" (ranOffset)="onRanOffset($event)" (runStarted)="onRunStarted($event)"
-        (runEnded)="onRunEnded($event)" (moved)="onMoved($event)" (movedAfter)="onMovedAfter($event)"
-        (resized)="onResized()" (swipeStarted)="onSwipeStarted()" (swipeMoved)="onSwipeMoved()"
-        (swipeEnded)="onSwipeEnded()" (translateJumped)="onTranslateJumped($event)">
+                 [arrowRightLabel]="arrowRightLabel" [type]="type" [startAt]="startAt" [perView]="perView"
+                 [focusAt]="isCenter ? 'center' : focusAt" [gap]="gap" [autoplay]="isAutoplay ? autoplay : false"
+                 [hoverpause]="hoverpause" [keyboard]="keyboard" [bound]="bound"
+                 [swipeThreshold]="isSwipeThreshold ? swipeThreshold : false"
+                 [dragThreshold]="isDragThreshold ? dragThreshold : false" [perTouch]="isPerTouch ? perTouch : false"
+                 [touchRatio]="touchRatio" [touchAngle]="touchAngle" [animationDuration]="animationDuration" [rewind]="rewind"
+                 [rewindDuration]="rewindDuration" [animationTimingFunc]="animationTimingFunc" [direction]="direction"
+                 [listenToEvents]="true" (mountedBefore)="onMountedBefore()" (mountedAfter)="onMountedAfter()"
+                 (updated)="onUpdated()" (played)="onPlayed()" (paused)="onPaused()" (buildedBefore)="onBuildedBefore()"
+                 (buildedAfter)="onBuildedAfter()" (ranBefore)="onRanBefore($event)" (ran)="onRan($event)"
+                 (ranAfter)="onRanAfter($event)" (ranOffset)="onRanOffset($event)" (runStarted)="onRunStarted($event)"
+                 (runEnded)="onRunEnded($event)" (moved)="onMoved($event)" (movedAfter)="onMovedAfter($event)"
+                 (resized)="onResized()" (swipeStarted)="onSwipeStarted()" (swipeMoved)="onSwipeMoved()"
+                 (swipeEnded)="onSwipeEnded()" (translateJumped)="onTranslateJumped($event)">
         <div class="backdrop" *ngFor="let backdrop of backdrops">
           <img [src]="backdrop + 1 | img:'jpeg':'backdrops'">
         </div>
@@ -25,10 +25,8 @@
       <mat-spinner class="spinner"></mat-spinner>
     </ng-container>
   </div>
-
   <div *ngIf="!isLoading">
     <mat-divider class="divider"></mat-divider>
-
     <div class="edit-backdrops">
       <div class="edit-backdrop">
         <mat-slide-toggle [checked]="showArrows" [(ngModel)]="showArrows">showArrows
@@ -63,7 +61,7 @@
       <div class="edit-backdrop">
         <mat-form-field>
           <input matInput type="number" placeholder="startAt" min="0" [max]="backdrops.length - 1"
-            [(ngModel)]="startAt">
+                 [(ngModel)]="startAt">
         </mat-form-field>
       </div>
       <div class="edit-backdrop">
@@ -77,7 +75,7 @@
         </mat-checkbox>
         <mat-form-field>
           <input matInput type="number" placeholder="focusAt" min="0" [max]="perView - 1" [disabled]="isCenter"
-            [(ngModel)]="focusAt">
+                 [(ngModel)]="focusAt">
         </mat-form-field>
       </div>
       <div class="edit-backdrop">
@@ -90,7 +88,7 @@
         </mat-slide-toggle>
         <mat-form-field>
           <input matInput type="number" placeholder="autoplay" min="0" step="1000" [disabled]="!isAutoplay"
-            [(ngModel)]="autoplay">
+                 [(ngModel)]="autoplay">
         </mat-form-field>
       </div>
       <div class="edit-backdrop">
@@ -113,7 +111,7 @@
         </mat-slide-toggle>
         <mat-form-field>
           <input matInput type="number" placeholder="swipeThreshold" min="0" step="10" [disabled]="!isSwipeThreshold"
-            [(ngModel)]="swipeThreshold">
+                 [(ngModel)]="swipeThreshold">
         </mat-form-field>
       </div>
       <div class="edit-backdrop">
@@ -121,7 +119,7 @@
         </mat-slide-toggle>
         <mat-form-field>
           <input matInput type="number" placeholder="dragThreshold" min="0" step="10" [disabled]="!isDragThreshold"
-            [(ngModel)]="dragThreshold">
+                 [(ngModel)]="dragThreshold">
         </mat-form-field>
       </div>
       <div class="edit-backdrop">
@@ -129,7 +127,7 @@
         </mat-slide-toggle>
         <mat-form-field>
           <input matInput type="number" placeholder="perTouch" min="0" max="5" [disabled]="!isPerTouch"
-            [(ngModel)]="perTouch">
+                 [(ngModel)]="perTouch">
         </mat-form-field>
       </div>
       <div class="edit-backdrop">
@@ -145,7 +143,7 @@
       <div class="edit-backdrop">
         <mat-form-field>
           <input matInput type="number" placeholder="animationDuration" min="100" max="4000" step="100"
-            [(ngModel)]="animationDuration">
+                 [(ngModel)]="animationDuration">
         </mat-form-field>
       </div>
       <div class="edit-backdrop">
@@ -156,7 +154,7 @@
       <div class="edit-backdrop">
         <mat-form-field>
           <input matInput type="number" placeholder="rewindDuration" min="100" max="4000" step="100"
-            [(ngModel)]="rewindDuration">
+                 [(ngModel)]="rewindDuration">
         </mat-form-field>
       </div>
       <div class="edit-backdrop">
@@ -201,9 +199,7 @@
         <button mat-raised-button color="primary" (click)="reset()">RESET</button>
       </div>
     </div>
-
     <mat-divider class="divider"></mat-divider>
-
     <div class="monitor mat-elevation-z6">
       <ng-container *ngIf="logs && logs.length">
         <ng-container *ngFor="let log of logs">

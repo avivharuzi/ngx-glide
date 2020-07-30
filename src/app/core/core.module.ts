@@ -11,8 +11,9 @@ import { HeaderComponent } from './components/header/header.component';
   imports: [
     CommonModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
   ],
-  exports: [HeaderComponent]
+  exports: [HeaderComponent],
 })
-export class CoreModule { }
+export class CoreModule {
+}

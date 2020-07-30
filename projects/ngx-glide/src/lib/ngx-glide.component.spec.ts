@@ -8,9 +8,9 @@ describe('NgxGlideComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NgxGlideComponent ]
+      declarations: [NgxGlideComponent],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

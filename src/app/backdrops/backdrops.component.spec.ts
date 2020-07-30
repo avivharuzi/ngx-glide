@@ -8,9 +8,9 @@ describe('BackdropsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BackdropsComponent ]
+      declarations: [BackdropsComponent],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

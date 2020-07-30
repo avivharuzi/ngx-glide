@@ -25,7 +25,7 @@ export const defaultSettings: Settings = {
   classes: {
     direction: {
       ltr: 'glide--ltr',
-      rtl: 'glide--rtl'
+      rtl: 'glide--rtl',
     },
     slider: 'glide--slider',
     carousel: 'glide--carousel',
@@ -34,7 +34,7 @@ export const defaultSettings: Settings = {
     cloneSlide: 'glide__slide--clone',
     activeNav: 'glide__bullet--active',
     activeSlide: 'glide__slide--active',
-    disabledArrow: 'glide__arrow--disabled'
+    disabledArrow: 'glide__arrow--disabled',
   },
-  throttle: 25
+  throttle: 25,
 };

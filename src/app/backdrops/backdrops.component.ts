@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-backdrops',
   templateUrl: './backdrops.component.html',
-  styleUrls: ['./backdrops.component.scss']
+  styleUrls: ['./backdrops.component.scss'],
 })
 export class BackdropsComponent implements OnInit {
   isLoading: boolean;
@@ -46,7 +46,7 @@ export class BackdropsComponent implements OnInit {
     this.logs = [];
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     setTimeout(() => {
       this.backdrops = [...new Array(20).keys()];
       this.isLoading = false;

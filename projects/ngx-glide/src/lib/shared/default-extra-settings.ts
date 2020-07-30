@@ -5,5 +5,5 @@ export const defaultExtraSettings: ExtraSettings = {
   showBullets: true,
   arrowLeftLabel: 'left',
   arrowRightLabel: 'right',
-  listenToEvents: false
+  listenToEvents: false,
 };

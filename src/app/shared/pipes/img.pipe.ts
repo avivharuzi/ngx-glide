@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'img'
+  name: 'img',
 })
 export class ImgPipe implements PipeTransform {
   transform(value: number, extension: string, prefix?: string): string {
