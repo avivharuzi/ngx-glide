@@ -13,7 +13,7 @@ Angular wrapper component of [Glide](https://glidejs.com) carousel library.
 
 Versions compatibility list:
 
-| ngx-glide |    Angular    |
+| ngx-glide | Angular       |
 | --------- | ------------- |
 | 10.x.x    | 10.x.x        |
 | 1.x.x     | 6.xx - 9.x.x  |
