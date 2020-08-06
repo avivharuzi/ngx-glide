@@ -10,6 +10,7 @@
                  [touchRatio]="touchRatio" [touchAngle]="touchAngle" [animationDuration]="animationDuration" [rewind]="rewind"
                  [rewindDuration]="rewindDuration" [animationTimingFunc]="animationTimingFunc" [direction]="direction"
                  [listenToEvents]="true" [breakpoints]="{ '768': { perView: 1 }, '1200': { perView: 2 } }"
+                 [arrowLeftTemplate]="showCustomArrows && arrowLeftTemplate" [arrowRightTemplate]="showCustomArrows && arrowRightTemplate"
                  (mountedBefore)="onMountedBefore()" (mountedAfter)="onMountedAfter()"
                  (updated)="onUpdated()" (played)="onPlayed()" (paused)="onPaused()" (buildedBefore)="onBuildedBefore()"
                  (buildedAfter)="onBuildedAfter()" (ranBefore)="onRanBefore($event)" (ran)="onRan($event)"
@@ -22,6 +23,16 @@
         </div>
       </ngx-glide>
     </ng-container>
+    <ng-template #arrowLeftTemplate>
+      <div class="custom-arrow custom-arrow-left">
+        <button mat-raised-button color="accent">👈 CUSTOM LEFT</button>
+      </div>
+    </ng-template>
+    <ng-template #arrowRightTemplate>
+      <div class="custom-arrow custom-arrow-right">
+        <button mat-raised-button color="accent">CUSTOM RIGHT 👉</button>
+      </div>
+    </ng-template>
     <ng-container *ngIf="isLoading">
       <mat-spinner class="spinner"></mat-spinner>
     </ng-container>
@@ -29,6 +40,10 @@
   <div *ngIf="!isLoading">
     <mat-divider class="divider"></mat-divider>
     <div class="edit-backdrops">
+      <div class="edit-backdrop">
+        <mat-slide-toggle [checked]="showCustomArrows" [(ngModel)]="showCustomArrows">showCustomArrows
+        </mat-slide-toggle>
+      </div>
       <div class="edit-backdrop">
         <mat-slide-toggle [checked]="showArrows" [(ngModel)]="showArrows">showArrows
         </mat-slide-toggle>

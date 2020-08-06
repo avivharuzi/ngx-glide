@@ -1,6 +1,6 @@
 import {
   Component, ChangeDetectionStrategy, OnChanges, AfterViewInit, OnDestroy, Input, Output,
-  EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, Inject, PLATFORM_ID, SimpleChanges, SimpleChange,
+  EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, Inject, PLATFORM_ID, SimpleChanges, SimpleChange, TemplateRef,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -19,7 +19,9 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
   @Input() showArrows: boolean;
   @Input() showBullets: boolean;
   @Input() arrowLeftLabel: string;
+  @Input() arrowLeftTemplate: TemplateRef<any>;
   @Input() arrowRightLabel: string;
+  @Input() arrowRightTemplate: TemplateRef<any>;
   @Input() listenToEvents: boolean;
 
   glideBullets: number[];
@@ -148,6 +150,10 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.destroy();
+  }
+
+  getStyleDisplay(condition: boolean): string {
+    return condition ? 'block' : 'none';
   }
 
   getIndex(): number {
