@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-backdrops',
   templateUrl: './backdrops.component.html',
-  styleUrls: ['./backdrops.component.scss']
+  styleUrls: ['./backdrops.component.scss'],
 })
 export class BackdropsComponent implements OnInit {
   isLoading: boolean;
   backdrops: number[];
+  showCustomArrows: boolean;
   showArrows: boolean;
   showBullets: boolean;
   arrowLeftLabel: string;
@@ -54,6 +55,7 @@ export class BackdropsComponent implements OnInit {
   }
 
   reset(): void {
+    this.showCustomArrows = false;
     this.showArrows = true;
     this.showBullets = true;
     this.arrowLeftLabel = 'left';

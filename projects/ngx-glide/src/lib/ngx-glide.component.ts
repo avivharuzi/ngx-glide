@@ -1,5 +1,7 @@
-import { Component, ChangeDetectionStrategy, OnChanges, AfterViewInit, OnDestroy, Input, Output,
-  EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, Inject, PLATFORM_ID, SimpleChanges, SimpleChange } from '@angular/core';
+import {
+  Component, ChangeDetectionStrategy, OnChanges, AfterViewInit, OnDestroy, Input, Output,
+  EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, Inject, PLATFORM_ID, SimpleChanges, SimpleChange, TemplateRef,
+} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 import Glide from '@glidejs/glide';
@@ -11,13 +13,15 @@ import { Settings } from './shared/settings.interface';
 @Component({
   selector: 'ngx-glide',
   templateUrl: './ngx-glide.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
   @Input() showArrows: boolean;
   @Input() showBullets: boolean;
   @Input() arrowLeftLabel: string;
+  @Input() arrowLeftTemplate: TemplateRef<any>;
   @Input() arrowRightLabel: string;
+  @Input() arrowRightTemplate: TemplateRef<any>;
   @Input() listenToEvents: boolean;
 
   glideBullets: number[];
@@ -74,7 +78,7 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
-    @Inject(PLATFORM_ID) private platformId: string
+    @Inject(PLATFORM_ID) private platformId: string,
   ) {
     this.showArrows = defaultExtraSettings.showArrows;
     this.showBullets = defaultExtraSettings.showBullets;
@@ -146,6 +150,10 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     this.destroy();
+  }
+
+  getStyleDisplay(condition: boolean): string {
+    return condition ? 'block' : 'none';
   }
 
   getIndex(): number {
@@ -311,7 +319,7 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
       peek: this.peek,
       breakpoints: this.breakpoints,
       classes: this.classes,
-      throttle: this.throttle
+      throttle: this.throttle,
     };
   }
 }

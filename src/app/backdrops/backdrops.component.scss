@@ -29,7 +29,6 @@
   justify-content: center;
   flex-wrap: wrap;
 
-
   .edit-backdrop {
     padding: 12px;
     margin-bottom: 24px;
@@ -51,4 +50,18 @@
   border: 1px solid #777;
   padding: 32px;
   border-radius: 4px;
+}
+
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &.custom-arrow-left {
+    left: 2.5%;
+  }
+
+  &.custom-arrow-right {
+    right: 2.5%;
+  }
 }

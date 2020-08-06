@@ -85,7 +85,9 @@ play(): void {
 | `showArrows`          | Boolean           | `true`                                       | Indicates if to show arrows in the view or not.                                            |
 | `showBullets`         | Boolean           | `true`                                       | Indicates if to show bullets in the view or not.                                           |
 | `arrowLeftLabel`      | String            | `'prev'`                                     | The label presented in the arrow left side.                                                |
+| `arrowLeftTemplate`   | TemplateRef<any>  | `null`                                       | Custom HTML (TemplateRef) to use for arrow left this disable the default.                  |
 | `arrowRightLabel`     | String            | `'next'`                                     | The label presented in the arrow right side.                                               |
+| `arrowRightTemplate`  | TemplateRef<any>  | `null`                                       | Custom HTML (TemplateRef) to use for arrow right this disable the default.                 |
 | `listenToEvents`      | Boolean           | `false`                                      | If you need to get output events set it to true (by default is false to save performance). |
 | `type`                | String            | `'slider'`                                   | Type of the movement.                                                                      |
 | `startAt`             | Number            | `0`                                          | Start at specific slide number.                                                            |
