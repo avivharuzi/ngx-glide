@@ -15,6 +15,7 @@ Versions compatibility list:
 
 | ngx-glide | Angular       |
 | --------- | ------------- |
+| 11.x.x    | 11.x.x        |
 | 10.x.x    | 10.x.x        |
 | 1.x.x     | 6.xx - 9.x.x  |
 
@@ -148,7 +149,7 @@ play(): void {
 
 ## Notes
 
-Currently there is no support for adding or removing items after the view is initialized (this is because i didnt see anything like this from glide library).
+Currently, there is no support for adding or removing items after the view is initialized (this is because I didn't see anything like this from glide library).
 
 # License
 
