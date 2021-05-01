@@ -19,7 +19,7 @@
                  (resized)="onResized()" (swipeStarted)="onSwipeStarted()" (swipeMoved)="onSwipeMoved()"
                  (swipeEnded)="onSwipeEnded()" (translateJumped)="onTranslateJumped($event)">
         <div class="backdrop" *ngFor="let backdrop of backdrops">
-          <img [src]="backdrop + 1 | img:'jpeg':'backdrops'">
+          <img [src]="backdrop + 1 | img:'jpeg':'backdrops'" [alt]="'backdrop image ' + backdrop">
         </div>
       </ngx-glide>
     </ng-container>

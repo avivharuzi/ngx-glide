@@ -1,10 +1,10 @@
 {
   "name": "ngx-glide",
-  "version": "10.1.0",
+  "version": "11.0.0",
   "description": "Angular wrapper component of Glide carousel library",
   "peerDependencies": {
-    "@angular/common": "10.x",
-    "@angular/core": "10.x",
+    "@angular/common": "11.x",
+    "@angular/core": "11.x",
     "@glidejs/glide": "^3.3.0"
   },
   "dependencies": {

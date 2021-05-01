@@ -10,6 +10,7 @@ import { defaultSettings } from './shared/default-settings';
 import { defaultExtraSettings } from './shared/default-extra-settings';
 import { Settings } from './shared/settings.interface';
 
+// noinspection TypeScriptFieldCanBeMadeReadonly,DuplicatedCode
 @Component({
   selector: 'ngx-glide',
   templateUrl: './ngx-glide.component.html',
@@ -132,9 +133,31 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
     this.translateJumped = new EventEmitter<object>();
   }
 
+  private static getGlideUpdateSettings(changes: SimpleChanges): object {
+    const settings = {};
+
+    for (const key in changes) {
+      if (!changes.hasOwnProperty(key)) {
+        continue;
+      }
+
+      if (!defaultSettings.hasOwnProperty(key)) {
+        continue;
+      }
+
+      const change: SimpleChange = changes[key];
+
+      if (change.previousValue !== change.currentValue) {
+        settings[key] = change.currentValue;
+      }
+    }
+
+    return settings;
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (isPlatformBrowser(this.platformId) && changes && this.glide) {
-      this.update(this.getGlideUpdateSettings(changes));
+      this.update(NgxGlideComponent.getGlideUpdateSettings(changes));
     }
   }
 
@@ -162,18 +185,21 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
     }
   }
 
+  // noinspection JSUnusedGlobalSymbols
   getSettings(): Settings {
     if (this.glide) {
       return this.glide.settings;
     }
   }
 
+  // noinspection JSUnusedGlobalSymbols
   getType(): string {
     if (this.glide) {
       return this.glide.type;
     }
   }
 
+  // noinspection JSUnusedGlobalSymbols
   isDisabled(): boolean {
     if (this.glide) {
       return this.glide.disabled;
@@ -199,6 +225,7 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
     }
   }
 
+  // noinspection JSUnusedGlobalSymbols
   go(pattern: string): void {
     if (this.glide) {
       this.glide.go(pattern);
@@ -271,28 +298,6 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
     this.glide.on('swipe.move', () => this.swipeMoved.emit());
     this.glide.on('swipe.end', () => this.swipeEnded.emit());
     this.glide.on('translate.jump', (movement: object) => this.translateJumped.emit(movement));
-  }
-
-  private getGlideUpdateSettings(changes: SimpleChanges): object {
-    const settings = {};
-
-    for (const key in changes) {
-      if (!changes.hasOwnProperty(key)) {
-        continue;
-      }
-
-      if (!defaultSettings.hasOwnProperty(key)) {
-        continue;
-      }
-
-      const change: SimpleChange = changes[key];
-
-      if (change.previousValue !== change.currentValue) {
-        settings[key] = change.currentValue;
-      }
-    }
-
-    return settings;
   }
 
   private getGlideInitSettings(): Settings {
