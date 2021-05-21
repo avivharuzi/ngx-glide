@@ -8,12 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [HeaderComponent],
-  imports: [
-    CommonModule,
-    MatToolbarModule,
-    MatButtonModule,
-  ],
+  imports: [CommonModule, MatToolbarModule, MatButtonModule],
   exports: [HeaderComponent],
 })
-export class CoreModule {
-}
+export class CoreModule {}

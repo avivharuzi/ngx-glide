@@ -8,5 +8,4 @@ import { NgxGlideComponent } from './ngx-glide.component';
   imports: [CommonModule],
   exports: [NgxGlideComponent],
 })
-export class NgxGlideModule {
-}
+export class NgxGlideModule {}

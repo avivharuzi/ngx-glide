@@ -1,13 +1,28 @@
 import {
-  Component, ChangeDetectionStrategy, OnChanges, AfterViewInit, OnDestroy, Input, Output,
-  EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, Inject, PLATFORM_ID, SimpleChanges, SimpleChange, TemplateRef,
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Inject,
+  Input,
+  OnChanges,
+  OnDestroy,
+  Output,
+  PLATFORM_ID,
+  SimpleChange,
+  SimpleChanges,
+  TemplateRef,
+  ViewChild,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
+// @ts-ignore
 import Glide from '@glidejs/glide';
 
-import { defaultSettings } from './shared/default-settings';
 import { defaultExtraSettings } from './shared/default-extra-settings';
+import { defaultSettings } from './shared/default-settings';
 import { Settings } from './shared/settings.interface';
 
 // noinspection TypeScriptFieldCanBeMadeReadonly,DuplicatedCode
@@ -20,36 +35,36 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
   @Input() showArrows: boolean;
   @Input() showBullets: boolean;
   @Input() arrowLeftLabel: string;
-  @Input() arrowLeftTemplate: TemplateRef<any>;
+  @Input() arrowLeftTemplate: TemplateRef<any> | null;
   @Input() arrowRightLabel: string;
-  @Input() arrowRightTemplate: TemplateRef<any>;
+  @Input() arrowRightTemplate: TemplateRef<any> | null;
   @Input() listenToEvents: boolean;
 
   glideBullets: number[];
 
-  @Input() private type: string;
-  @Input() private startAt: number;
-  @Input() private perView: number;
-  @Input() private focusAt: number | string;
-  @Input() private gap: number;
-  @Input() private autoplay: number | boolean;
-  @Input() private hoverpause: boolean;
-  @Input() private keyboard: boolean;
-  @Input() private bound: boolean;
-  @Input() private swipeThreshold: number | boolean;
-  @Input() private dragThreshold: number | boolean;
-  @Input() private perTouch: number | boolean;
-  @Input() private touchRatio: number;
-  @Input() private touchAngle: number;
-  @Input() private animationDuration: number;
-  @Input() private rewind: boolean;
-  @Input() private rewindDuration: number;
-  @Input() private animationTimingFunc: string;
-  @Input() private direction: string;
-  @Input() private peek: number | object;
-  @Input() private breakpoints: object;
-  @Input() private classes: object;
-  @Input() private throttle: number;
+  @Input() type: string;
+  @Input() startAt: number;
+  @Input() perView: number;
+  @Input() focusAt: number | string;
+  @Input() gap: number;
+  @Input() autoplay: number | boolean;
+  @Input() hoverpause: boolean;
+  @Input() keyboard: boolean;
+  @Input() bound: boolean;
+  @Input() swipeThreshold: number | boolean;
+  @Input() dragThreshold: number | boolean;
+  @Input() perTouch: number | boolean;
+  @Input() touchRatio: number;
+  @Input() touchAngle: number;
+  @Input() animationDuration: number;
+  @Input() rewind: boolean;
+  @Input() rewindDuration: number;
+  @Input() animationTimingFunc: string;
+  @Input() direction: string;
+  @Input() peek: number | object;
+  @Input() breakpoints: object;
+  @Input() classes: object;
+  @Input() throttle: number;
 
   @Output() private mountedBefore: EventEmitter<void>;
   @Output() private mountedAfter: EventEmitter<void>;
@@ -72,20 +87,25 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
   @Output() private swipeEnded: EventEmitter<void>;
   @Output() private translateJumped: EventEmitter<object>;
 
-  @ViewChild('glideEl', { static: false }) private glideEl: ElementRef;
-  @ViewChild('glideSlidesEl', { static: false }) private glideSlidesEl: ElementRef;
+  @ViewChild('glideEl', { static: false }) private glideEl?: ElementRef;
+  @ViewChild('glideSlidesEl', { static: false })
+  private glideSlidesEl?: ElementRef;
 
   private glide: any;
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
-    @Inject(PLATFORM_ID) private platformId: string,
+    @Inject(PLATFORM_ID) private platformId: string
   ) {
     this.showArrows = defaultExtraSettings.showArrows;
     this.showBullets = defaultExtraSettings.showBullets;
     this.arrowLeftLabel = defaultExtraSettings.arrowLeftLabel;
+    this.arrowLeftTemplate = null;
     this.arrowRightLabel = defaultExtraSettings.arrowRightLabel;
+    this.arrowRightTemplate = null;
     this.listenToEvents = defaultExtraSettings.listenToEvents;
+
+    this.glideBullets = [];
 
     this.type = defaultSettings.type;
     this.startAt = defaultSettings.startAt;
@@ -148,6 +168,7 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
       const change: SimpleChange = changes[key];
 
       if (change.previousValue !== change.currentValue) {
+        // @ts-ignore
         settings[key] = change.currentValue;
       }
     }
@@ -164,7 +185,10 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.initGlideBullets();
-      this.glide = new Glide(this.glideEl.nativeElement, this.getGlideInitSettings());
+      this.glide = new Glide(
+        this.glideEl?.nativeElement,
+        this.getGlideInitSettings()
+      );
       this.initGlideEvents();
       this.mount();
       this.changeDetectorRef.detectChanges();
@@ -180,30 +204,22 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
   }
 
   getIndex(): number {
-    if (this.glide) {
-      return this.glide.index;
-    }
+    return this.glide && this.glide.index;
   }
 
   // noinspection JSUnusedGlobalSymbols
   getSettings(): Settings {
-    if (this.glide) {
-      return this.glide.settings;
-    }
+    return this.glide && this.glide.settings;
   }
 
   // noinspection JSUnusedGlobalSymbols
   getType(): string {
-    if (this.glide) {
-      return this.glide.type;
-    }
+    return this.glide && this.glide.type;
   }
 
   // noinspection JSUnusedGlobalSymbols
   isDisabled(): boolean {
-    if (this.glide) {
-      return this.glide.disabled;
-    }
+    return this.glide && this.glide.disabled;
   }
 
   mount(): void {
@@ -261,13 +277,12 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
   }
 
   isType(type: string): boolean {
-    if (this.glide) {
-      return this.glide.isType(type);
-    }
+    return this.glide && this.glide.isType(type);
   }
 
   private initGlideBullets(): void {
-    const glideSlidesNativeElement: HTMLElement = this.glideSlidesEl.nativeElement;
+    const glideSlidesNativeElement: HTMLElement =
+      this.glideSlidesEl?.nativeElement;
     const childrenLength: number = glideSlidesNativeElement.children.length;
     this.glideBullets = [...new Array(childrenLength).keys()];
     this.changeDetectorRef.detectChanges();
@@ -292,12 +307,16 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
     this.glide.on('run.start', (move: object) => this.runStarted.emit(move));
     this.glide.on('run.end', (move: object) => this.runEnded.emit(move));
     this.glide.on('move', (movement: object) => this.moved.emit(movement));
-    this.glide.on('move.after', (movement: object) => this.movedAfter.emit(movement));
+    this.glide.on('move.after', (movement: object) =>
+      this.movedAfter.emit(movement)
+    );
     this.glide.on('resize', () => this.resized.emit());
     this.glide.on('swipe.start', () => this.swipeStarted.emit());
     this.glide.on('swipe.move', () => this.swipeMoved.emit());
     this.glide.on('swipe.end', () => this.swipeEnded.emit());
-    this.glide.on('translate.jump', (movement: object) => this.translateJumped.emit(movement));
+    this.glide.on('translate.jump', (movement: object) =>
+      this.translateJumped.emit(movement)
+    );
   }
 
   private getGlideInitSettings(): Settings {

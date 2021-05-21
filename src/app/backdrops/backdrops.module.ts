@@ -10,7 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 
-import { NgxGlideModule } from 'ngx-glide';
+import { NgxGlideModule } from '../../../projects/ngx-glide/src/lib/ngx-glide.module';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -33,5 +33,4 @@ import { BackdropsComponent } from './backdrops.component';
   ],
   exports: [BackdropsComponent],
 })
-export class BackdropsModule {
-}
+export class BackdropsModule {}

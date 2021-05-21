@@ -6,29 +6,24 @@ Angular wrapper component of [Glide](https://glidejs.com) carousel library.
 
 ## Environment Support
 
-* Angular 6+
-* Server-side Rendering
+- Angular 6+
+- Server-side Rendering
 
 ## Compatibility
 
 Versions compatibility list:
 
-| ngx-glide | Angular       |
-| --------- | ------------- |
-| 11.x.x    | 11.x.x        |
-| 10.x.x    | 10.x.x        |
-| 1.x.x     | 6.xx - 9.x.x  |
+| ngx-glide | Angular      |
+| --------- | ------------ |
+| 12.x.x    | 12.x.x       |
+| 11.x.x    | 11.x.x       |
+| 10.x.x    | 10.x.x       |
+| 1.x.x     | 6.xx - 9.x.x |
 
 ## Installation
 
 ```sh
-npm i @glidejs/glide@3.3.0 ngx-glide
-```
-
-OR
-
-```sh
-yarn install @glidejs/glide@3.3.0 ngx-glide
+npm i @glidejs/glide@3.4.1 ngx-glide
 ```
 
 ## Demo

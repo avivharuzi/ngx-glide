@@ -4,19 +4,49 @@
       <ng-content></ng-content>
     </div>
   </div>
-  <div class="glide__arrows" data-glide-el="controls" [style.display]="showArrows ? 'block' : 'none'">
-    <button class="glide__arrow glide__arrow--left" data-glide-dir="<" [style.display]="getStyleDisplay(!arrowLeftTemplate)">{{ arrowLeftLabel }}</button>
-    <button class="glide__arrow glide__arrow--right" data-glide-dir=">" [style.display]="getStyleDisplay(!arrowRightTemplate)">{{ arrowRightLabel }}</button>
-    <div data-glide-dir="<" [style.display]="getStyleDisplay(!!arrowLeftTemplate)">
+  <div
+    class="glide__arrows"
+    data-glide-el="controls"
+    [style.display]="showArrows ? 'block' : 'none'"
+  >
+    <button
+      class="glide__arrow glide__arrow--left"
+      data-glide-dir="<"
+      [style.display]="getStyleDisplay(!arrowLeftTemplate)"
+    >
+      {{ arrowLeftLabel }}
+    </button>
+    <button
+      class="glide__arrow glide__arrow--right"
+      data-glide-dir=">"
+      [style.display]="getStyleDisplay(!arrowRightTemplate)"
+    >
+      {{ arrowRightLabel }}
+    </button>
+    <div
+      data-glide-dir="<"
+      [style.display]="getStyleDisplay(!!arrowLeftTemplate)"
+    >
       <ng-container *ngTemplateOutlet="arrowLeftTemplate"></ng-container>
     </div>
-    <div data-glide-dir=">" [style.display]="getStyleDisplay(!!arrowRightTemplate)">
+    <div
+      data-glide-dir=">"
+      [style.display]="getStyleDisplay(!!arrowRightTemplate)"
+    >
       <ng-container *ngTemplateOutlet="arrowRightTemplate"></ng-container>
     </div>
   </div>
-  <div class="glide__bullets" data-glide-el="controls[nav]" [style.display]="showBullets ? 'block' : 'none'">
+  <div
+    class="glide__bullets"
+    data-glide-el="controls[nav]"
+    [style.display]="showBullets ? 'block' : 'none'"
+  >
     <ng-container *ngIf="glideBullets">
-      <button class="glide__bullet" *ngFor="let glideBullet of glideBullets" [attr.data-glide-dir]="'=' + glideBullet"></button>
+      <button
+        class="glide__bullet"
+        *ngFor="let glideBullet of glideBullets"
+        [attr.data-glide-dir]="'=' + glideBullet"
+      ></button>
     </ng-container>
   </div>
 </div>

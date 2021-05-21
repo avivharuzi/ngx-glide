@@ -1,14 +1,11 @@
 {
   "name": "ngx-glide",
-  "version": "11.0.1",
+  "version": "12.0.0",
   "description": "Angular wrapper component of Glide carousel library",
   "peerDependencies": {
-    "@angular/common": "11.x",
-    "@angular/core": "11.x",
-    "@glidejs/glide": "^3.3.0"
-  },
-  "dependencies": {
-    "tslib": "^2.0.0"
+    "@angular/common": "12.x",
+    "@angular/core": "12.x",
+    "@glidejs/glide": "^3.4.1"
   },
   "repository": {
     "type": "git",
@@ -26,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/avivharuzi/ngx-glide/issues"
   },
-  "homepage": "https://github.com/avivharuzi/ngx-glide#readme"
+  "homepage": "https://github.com/avivharuzi/ngx-glide#readme",
+  "dependencies": {
+    "tslib": "^2.1.0"
+  }
 }

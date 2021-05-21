@@ -8,37 +8,67 @@ import { Component, OnInit } from '@angular/core';
 export class BackdropsComponent implements OnInit {
   isLoading: boolean;
   backdrops: number[];
+  // @ts-ignore
   showCustomArrows: boolean;
+  // @ts-ignore
   showArrows: boolean;
+  // @ts-ignore
   showBullets: boolean;
+  // @ts-ignore
   arrowLeftLabel: string;
+  // @ts-ignore
   arrowRightLabel: string;
+  // @ts-ignore
   type: string;
+  // @ts-ignore
   startAt: number;
+  // @ts-ignore
   perView: number;
+  // @ts-ignore
   focusAt: number | string;
+  // @ts-ignore
   gap: number;
+  // @ts-ignore
   autoplay: number | boolean;
+  // @ts-ignore
   hoverpause: boolean;
+  // @ts-ignore
   keyboard: boolean;
+  // @ts-ignore
   bound: boolean;
+  // @ts-ignore
   swipeThreshold: number | boolean;
+  // @ts-ignore
   dragThreshold: number | boolean;
+  // @ts-ignore
   perTouch: number | boolean;
+  // @ts-ignore
   touchRatio: number;
+  // @ts-ignore
   touchAngle: number;
+  // @ts-ignore
   animationDuration: number;
+  // @ts-ignore
   rewind: boolean;
+  // @ts-ignore
   rewindDuration: number;
+  // @ts-ignore
   animationTimingFunc: string;
+  // @ts-ignore
   direction: string;
+  // @ts-ignore
   classes: object;
+  // @ts-ignore
   isCenter: boolean;
+  // @ts-ignore
   isAutoplay: boolean;
+  // @ts-ignore
   isSwipeThreshold: boolean;
+  // @ts-ignore
   isDragThreshold: boolean;
+  // @ts-ignore
   isPerTouch: boolean;
-  logs: { event: string, data?: object }[];
+  logs: { event: string; data?: object }[];
 
   constructor() {
     this.isLoading = true;

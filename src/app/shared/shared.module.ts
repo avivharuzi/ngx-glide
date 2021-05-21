@@ -8,5 +8,4 @@ import { ImgPipe } from './pipes/img.pipe';
   imports: [CommonModule],
   exports: [ImgPipe],
 })
-export class SharedModule {
-}
+export class SharedModule {}
