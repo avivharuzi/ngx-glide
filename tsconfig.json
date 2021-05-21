@@ -12,7 +12,7 @@
     "declaration": false,
     "downlevelIteration": true,
     "paths": {
-      "ngx-skeleton": ["dist/ngx-skeleton/ngx-skeleton", "dist/ngx-skeleton"]
+      "ngx-glide": ["dist/ngx-glide/ngx-glide", "dist/ngx-glide"]
     },
     "experimentalDecorators": true,
     "moduleResolution": "node",

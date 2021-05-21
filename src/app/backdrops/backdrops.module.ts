@@ -10,7 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 
-import { NgxGlideModule } from '../../../projects/ngx-glide/src/lib/ngx-glide.module';
+import { NgxGlideModule } from 'ngx-glide';
 
 import { SharedModule } from '../shared/shared.module';
 

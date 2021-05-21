@@ -124,9 +124,23 @@
             "tsConfig": "projects/ngx-glide/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-glide/karma.conf.js"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html",
+              "projects/ngx-glide/**/*.ts",
+              "projects/ngx-glide/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "ngx-glide-app"
+  "defaultProject": "ngx-glide-app",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
