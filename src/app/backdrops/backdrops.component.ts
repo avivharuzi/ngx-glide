@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgxGlideComponent } from 'ngx-glide';
 
 @Component({
   selector: 'app-backdrops',
@@ -8,67 +9,39 @@ import { Component, OnInit } from '@angular/core';
 export class BackdropsComponent implements OnInit {
   isLoading: boolean;
   backdrops: number[];
-  // @ts-ignore
-  showCustomArrows: boolean;
-  // @ts-ignore
-  showArrows: boolean;
-  // @ts-ignore
-  showBullets: boolean;
-  // @ts-ignore
-  arrowLeftLabel: string;
-  // @ts-ignore
-  arrowRightLabel: string;
-  // @ts-ignore
-  type: string;
-  // @ts-ignore
-  startAt: number;
-  // @ts-ignore
-  perView: number;
-  // @ts-ignore
-  focusAt: number | string;
-  // @ts-ignore
-  gap: number;
-  // @ts-ignore
-  autoplay: number | boolean;
-  // @ts-ignore
-  hoverpause: boolean;
-  // @ts-ignore
-  keyboard: boolean;
-  // @ts-ignore
-  bound: boolean;
-  // @ts-ignore
-  swipeThreshold: number | boolean;
-  // @ts-ignore
-  dragThreshold: number | boolean;
-  // @ts-ignore
-  perTouch: number | boolean;
-  // @ts-ignore
-  touchRatio: number;
-  // @ts-ignore
-  touchAngle: number;
-  // @ts-ignore
-  animationDuration: number;
-  // @ts-ignore
-  rewind: boolean;
-  // @ts-ignore
-  rewindDuration: number;
-  // @ts-ignore
-  animationTimingFunc: string;
-  // @ts-ignore
-  direction: string;
-  // @ts-ignore
-  classes: object;
-  // @ts-ignore
-  isCenter: boolean;
-  // @ts-ignore
-  isAutoplay: boolean;
-  // @ts-ignore
-  isSwipeThreshold: boolean;
-  // @ts-ignore
-  isDragThreshold: boolean;
-  // @ts-ignore
-  isPerTouch: boolean;
+  showCustomArrows!: boolean;
+  showArrows!: boolean;
+  showBullets!: boolean;
+  arrowLeftLabel!: string;
+  arrowRightLabel!: string;
+  type!: string;
+  startAt!: number;
+  perView!: number;
+  focusAt!: number | string;
+  gap!: number;
+  autoplay!: number | boolean;
+  hoverpause!: boolean;
+  keyboard!: boolean;
+  bound!: boolean;
+  swipeThreshold!: number | boolean;
+  dragThreshold!: number | boolean;
+  perTouch!: number | boolean;
+  touchRatio!: number;
+  touchAngle!: number;
+  animationDuration!: number;
+  rewind!: boolean;
+  rewindDuration!: number;
+  animationTimingFunc!: string;
+  direction!: string;
+  classes!: object;
+  isCenter!: boolean;
+  isAutoplay!: boolean;
+  isSwipeThreshold!: boolean;
+  isDragThreshold!: boolean;
+  isPerTouch!: boolean;
   logs: { event: string; data?: object }[];
+
+  @ViewChild('ngxGlide') ngxGlide!: NgxGlideComponent;
 
   constructor() {
     this.isLoading = true;
@@ -114,6 +87,12 @@ export class BackdropsComponent implements OnInit {
     this.rewindDuration = 800;
     this.animationTimingFunc = 'cubic-bezier(0.165, 0.840, 0.440, 1.000)';
     this.direction = 'ltr';
+  }
+
+  recreate(): void {
+    if (this.ngxGlide) {
+      this.ngxGlide.recreate();
+    }
   }
 
   onMountedBefore(): void {

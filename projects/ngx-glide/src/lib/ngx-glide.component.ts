@@ -154,21 +154,17 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
   }
 
   private static getGlideUpdateSettings(changes: SimpleChanges): object {
-    const settings = {};
+    const settings: any = {};
 
     for (const key in changes) {
       if (!changes.hasOwnProperty(key)) {
         continue;
       }
-
       if (!defaultSettings.hasOwnProperty(key)) {
         continue;
       }
-
       const change: SimpleChange = changes[key];
-
       if (change.previousValue !== change.currentValue) {
-        // @ts-ignore
         settings[key] = change.currentValue;
       }
     }
@@ -184,14 +180,7 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.initGlideBullets();
-      this.glide = new Glide(
-        this.glideEl?.nativeElement,
-        this.getGlideInitSettings()
-      );
-      this.initGlideEvents();
-      this.mount();
-      this.changeDetectorRef.detectChanges();
+      this.create();
     }
   }
 
@@ -207,7 +196,6 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
     return this.glide && this.glide.index;
   }
 
-  // noinspection JSUnusedGlobalSymbols
   getSettings(): Settings {
     return this.glide && this.glide.settings;
   }
@@ -278,6 +266,24 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
 
   isType(type: string): boolean {
     return this.glide && this.glide.isType(type);
+  }
+
+  recreate(): void {
+    if (this.glide) {
+      this.destroy();
+    }
+    this.create();
+  }
+
+  private create(): void {
+    this.initGlideBullets();
+    this.glide = new Glide(
+      this.glideEl?.nativeElement,
+      this.getGlideInitSettings()
+    );
+    this.initGlideEvents();
+    this.mount();
+    this.changeDetectorRef.detectChanges();
   }
 
   private initGlideBullets(): void {

@@ -144,7 +144,7 @@ play(): void {
 
 ## Notes
 
-Currently, there is no support for adding or removing items after the view is initialized (this is because I didn't see anything like this from glide library).
+Currently, there is no support for adding or removing items after the view is an initialized (this is because I didn't see anything like this from glide library).
 
 # License
 

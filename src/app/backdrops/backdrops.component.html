@@ -2,6 +2,7 @@
   <div class="backdrops">
     <ng-container *ngIf="backdrops && backdrops.length">
       <ngx-glide
+        #ngxGlide
         [showArrows]="showArrows"
         [showBullets]="showBullets"
         [arrowLeftLabel]="arrowLeftLabel"
@@ -331,6 +332,9 @@
       <div class="edit-backdrop">
         <button mat-raised-button color="primary" (click)="reset()">
           RESET
+        </button>
+        <button mat-raised-button color="primary" (click)="recreate()">
+          RECREATE
         </button>
       </div>
     </div>
