@@ -81,6 +81,36 @@ play(): void {
 }
 ```
 
+Update the carousel items dynamically (**only available from version 12**).
+
+```html
+<ng-container *ngIf="names && names.length > 0">
+  <ngx-glide #ngxGlide>
+    <ng-container *ngFor="let name of names">
+      <div>{{ name }}</div>
+    </ng-container>
+  </ngx-glide>
+</ng-container>
+```
+
+```ts
+// Get the component instance.
+@ViewChild('ngxGlide') ngxGlide!: NgxGlideComponent;
+
+names: string[];
+
+constructor() {
+  this.names = ['Johny Depp', 'Christian Bale'];
+}
+
+updateItems(): void {
+  this.names = [...this.names, 'Tom Hanks'];
+  if (this.ngxGlide) {
+    this.ngxGlide.recreate();
+  }
+}
+```
+
 ## API
 
 ### Inputs
@@ -141,10 +171,6 @@ play(): void {
 | `swipeMoved`      | void       |                                    | Called during swiping movement.                                                                                                                                            |
 | `swipeEnded`      | void       |                                    | Called right after swiping ends.                                                                                                                                           |
 | `translateJumped` | Object     |                                    | Called right before a translate applies, while we doing a jump to the first or last slide from offset movement. This event is only used when a type is set up to carousel. |
-
-## Notes
-
-Currently, there is no support for adding or removing items after the view is an initialized (this is because I didn't see anything like this from glide library).
 
 # License
 
