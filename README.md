@@ -13,17 +13,18 @@ Angular wrapper component of [Glide](https://glidejs.com) carousel library.
 
 Versions compatibility list:
 
-| ngx-glide | Angular      |
-| --------- | ------------ |
-| 12.x.x    | 12.x.x       |
-| 11.x.x    | 11.x.x       |
-| 10.x.x    | 10.x.x       |
-| 1.x.x     | 6.xx - 9.x.x |
+| ngx-glide | Angular       | @glidejs/glide |
+| --------- | ------------- | -------------- |
+| 13.x.x    | 13.x.x        | 3.x.x          |
+| 12.x.x    | 12.x.x        | 3.x.x          |
+| 11.x.x    | 11.x.x        | 3.x.x          |
+| 10.x.x    | 10.x.x        | 3.x.x          |
+| 1.x.x     | 6.x.x - 9.x.x | 3.x.x          |
 
 ## Installation
 
 ```sh
-npm i @glidejs/glide@3.4.1 ngx-glide
+npm i @glidejs/glide@3 ngx-glide
 ```
 
 ## Demo
@@ -115,37 +116,37 @@ updateItems(): void {
 
 ### Inputs
 
-| Input                 | Type              | Default                                      | Description                                                                                |
-| --------------------- | ----------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `showArrows`          | Boolean           | `true`                                       | Indicates if to show arrows in the view or not.                                            |
-| `showBullets`         | Boolean           | `true`                                       | Indicates if to show bullets in the view or not.                                           |
-| `arrowLeftLabel`      | String            | `'prev'`                                     | The label presented in the arrow left side.                                                |
-| `arrowLeftTemplate`   | TemplateRef<any>  | `null`                                       | Custom HTML (TemplateRef) to use for arrow left this disable the default.                  |
-| `arrowRightLabel`     | String            | `'next'`                                     | The label presented in the arrow right side.                                               |
-| `arrowRightTemplate`  | TemplateRef<any>  | `null`                                       | Custom HTML (TemplateRef) to use for arrow right this disable the default.                 |
-| `listenToEvents`      | Boolean           | `false`                                      | If you need to get output events set it to true (by default is false to save performance). |
-| `type`                | String            | `'slider'`                                   | Type of the movement.                                                                      |
-| `startAt`             | Number            | `0`                                          | Start at specific slide number.                                                            |
-| `perView`             | Number            | `1`                                          | A number of visible slides.                                                                |
-| `focusAt`             | Number or String  | `0`                                          | Focus currently active slide at a specified position.                                      |
-| `gap`                 | Number            | `10`                                         | A size of the space between slide.                                                         |
-| `autoplay`            | Number or Boolean | `false`                                      | Change slides after a specified interval.                                                  |
-| `hoverpause`          | Boolean           | `true`                                       | Stop autoplay on mouseover.                                                                |
-| `keyboard`            | Boolean           | `true`                                       | Change slides with keyboard arrows.                                                        |
-| `bound`               | Boolean           | `false`                                      | Stop running `perView` number of slides from the end.                                      |
-| `swipeThreshold`      | Number or Boolean | `80`                                         | Minimal swipe distance needed to change the slide.                                         |
-| `dragThreshold`       | Number or Boolean | `120`                                        | Minimal mousedrag distance needed to change the slide.                                     |
-| `perTouch`            | Number or Boolean | `false`                                      | A maximum number of slides moved per single swipe or drag.                                 |
-| `touchRatio`          | Number            | `0.5`                                        | Alternate moving distance ratio of swiping and dragging.                                   |
-| `touchAngle`          | Number            | `45`                                         | Angle required to activate slides moving.                                                  |
-| `animationDuration`   | Number            | `400`                                        | Easing function for the animation.                                                         |
-| `rewind`              | Boolean           | `true`                                       | Allow looping the `slider` type.                                                           |
-| `rewindDuration`      | Number            | `800`                                        | Duration of the rewinding animation.                                                       |
-| `animationTimingFunc` | String            | `'cubic-bezier(0.165, 0.840, 0.440, 1.000)'` | Easing function for the animation.                                                         |
-| `direction`           | String            | `'ltr'`                                      | Moving direction mode.                                                                     |
-| `peek`                | Number or object  | `0`                                          | The value of the future viewports which have to be visible in the current view.            |
-| `breakpoints`         | Object            | `{}`                                         | Collection of options applied at specified media breakpoints.                              |
-| `throttle`            | Number            | `25`                                         | Throttle costly events                                                                     |
+| Input                 | Type                  | Default                                      | Description                                                                                |
+| --------------------- | --------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `showArrows`          | boolean               | `true`                                       | Indicates if to show arrows in the view or not.                                            |
+| `showBullets`         | boolean               | `true`                                       | Indicates if to show bullets in the view or not.                                           |
+| `arrowLeftLabel`      | string                | `'prev'`                                     | The label presented in the arrow left side.                                                |
+| `arrowLeftTemplate`   | TemplateRef           | `null`                                       | Custom HTML (TemplateRef) to use for arrow left this disable the default.                  |
+| `arrowRightLabel`     | string                | `'next'`                                     | The label presented in the arrow right side.                                               |
+| `arrowRightTemplate`  | TemplateRef           | `null`                                       | Custom HTML (TemplateRef) to use for arrow right this disable the default.                 |
+| `listenToEvents`      | boolean               | `false`                                      | If you need to get output events set it to true (by default is false to save performance). |
+| `type`                | string                | `'slider'`                                   | Type of the movement.                                                                      |
+| `startAt`             | number                | `0`                                          | Start at specific slide number.                                                            |
+| `perView`             | number                | `1`                                          | A number of visible slides.                                                                |
+| `focusAt`             | number &#124; string  | `0`                                          | Focus currently active slide at a specified position.                                      |
+| `gap`                 | number                | `10`                                         | A size of the space between slide.                                                         |
+| `autoplay`            | number &#124; boolean | `false`                                      | Change slides after a specified interval.                                                  |
+| `hoverpause`          | boolean               | `true`                                       | Stop autoplay on mouseover.                                                                |
+| `keyboard`            | boolean               | `true`                                       | Change slides with keyboard arrows.                                                        |
+| `bound`               | boolean               | `false`                                      | Stop running `perView` number of slides from the end.                                      |
+| `swipeThreshold`      | number &#124; boolean | `80`                                         | Minimal swipe distance needed to change the slide.                                         |
+| `dragThreshold`       | number &#124; boolean | `120`                                        | Minimal mousedrag distance needed to change the slide.                                     |
+| `perTouch`            | number &#124; boolean | `false`                                      | A maximum number of slides moved per single swipe or drag.                                 |
+| `touchRatio`          | number                | `0.5`                                        | Alternate moving distance ratio of swiping and dragging.                                   |
+| `touchAngle`          | number                | `45`                                         | Angle required to activate slides moving.                                                  |
+| `animationDuration`   | number                | `400`                                        | Easing function for the animation.                                                         |
+| `rewind`              | boolean               | `true`                                       | Allow looping the `slider` type.                                                           |
+| `rewindDuration`      | number                | `800`                                        | Duration of the rewinding animation.                                                       |
+| `animationTimingFunc` | string                | `'cubic-bezier(0.165, 0.840, 0.440, 1.000)'` | Easing function for the animation.                                                         |
+| `direction`           | string                | `'ltr'`                                      | Moving direction mode.                                                                     |
+| `peek`                | number &#124; object  | `0`                                          | The value of the future viewports which have to be visible in the current view.            |
+| `breakpoints`         | object                | `{}`                                         | Collection of options applied at specified media breakpoints.                              |
+| `throttle`            | number                | `25`                                         | Throttle costly events                                                                     |
 
 ## Outputs
 
@@ -158,19 +159,19 @@ updateItems(): void {
 | `paused`          | void       |                                    | Called right after stopping instance with pause() API method.                                                                                                              |
 | `buildedBefore`   | void       |                                    | Called right before setting up a slider to its initial state. At this point, classes, translations, and sizes are applied.                                                 |
 | `buildedAfter`    | void       |                                    | Called right after setting up a slider to its initial state. At this point, classes, translations, and sizes are applied.                                                  |
-| `ranBefore`       | Object     | `{ "direction": ">", "steps": 0 }` | Called right before calculating new index and making a transition. The movement schema (eg. `=1`) string has been parsed.                                                  |
-| `ran`             | Object     | `{ "direction": ">", "steps": 0 }` | Called right after calculating new index and before making a transition. The movement schema (eg. `=1`) string has been parsed.                                            |
-| `ranAfter`        | Object     | `{ "direction": ">", "steps": 0 }` | Called after calculating new index and making a transition. The movement schema (eg. `=1`) string has been parsed.                                                         |
-| `ranOffset`       | Object     | `{ "direction": ">", "steps": 0 }` | Called after calculating new index and making a transition, while we did an offset animation. Offset animation take place at two moments.                                  |
-| `runStarted`      | Object     | `{ "direction": ">", "steps": 0 }` | Called right after calculating the new index, but before making a transition, while we did a rewinding to the start index.                                                 |
-| `runEnded`        | Object     | `{ "direction": ">", "steps": 0 }` | Called right after calculating the new index, but before making a transition, while we did a rewinding to the last index.                                                  |
-| `moved`           | Object     | `{ "movement": 0 }`                | Called right before movement transition begins.                                                                                                                            |
-| `movedAfter`      | Object     | `{ "movement": 0 }`                | Called right after movement transition ends.                                                                                                                               |
+| `ranBefore`       | object     | `{ "direction": ">", "steps": 0 }` | Called right before calculating new index and making a transition. The movement schema (eg. `=1`) string has been parsed.                                                  |
+| `ran`             | object     | `{ "direction": ">", "steps": 0 }` | Called right after calculating new index and before making a transition. The movement schema (eg. `=1`) string has been parsed.                                            |
+| `ranAfter`        | object     | `{ "direction": ">", "steps": 0 }` | Called after calculating new index and making a transition. The movement schema (eg. `=1`) string has been parsed.                                                         |
+| `ranOffset`       | object     | `{ "direction": ">", "steps": 0 }` | Called after calculating new index and making a transition, while we did an offset animation. Offset animation take place at two moments.                                  |
+| `runStarted`      | object     | `{ "direction": ">", "steps": 0 }` | Called right after calculating the new index, but before making a transition, while we did a rewinding to the start index.                                                 |
+| `runEnded`        | object     | `{ "direction": ">", "steps": 0 }` | Called right after calculating the new index, but before making a transition, while we did a rewinding to the last index.                                                  |
+| `moved`           | object     | `{ "movement": 0 }`                | Called right before movement transition begins.                                                                                                                            |
+| `movedAfter`      | object     | `{ "movement": 0 }`                | Called right after movement transition ends.                                                                                                                               |
 | `resized`         | void       |                                    | Called when the window is being resized. This event throttled.                                                                                                             |
 | `swipeStarted`    | void       |                                    | Called right after swiping begins.                                                                                                                                         |
 | `swipeMoved`      | void       |                                    | Called during swiping movement.                                                                                                                                            |
 | `swipeEnded`      | void       |                                    | Called right after swiping ends.                                                                                                                                           |
-| `translateJumped` | Object     |                                    | Called right before a translate applies, while we doing a jump to the first or last slide from offset movement. This event is only used when a type is set up to carousel. |
+| `translateJumped` | object     |                                    | Called right before a translate applies, while we doing a jump to the first or last slide from offset movement. This event is only used when a type is set up to carousel. |
 
 # License
 

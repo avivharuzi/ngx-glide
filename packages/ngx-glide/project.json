@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "packages/ngx-glide",
+  "sourceRoot": "packages/ngx-glide/src",
+  "prefix": "ngx-glide",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/packages/ngx-glide"],
+      "options": {
+        "project": "packages/ngx-glide/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "packages/ngx-glide/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "packages/ngx-glide/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/ngx-glide"],
+      "options": {
+        "jestConfig": "packages/ngx-glide/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/ngx-glide/src/**/*.ts",
+          "packages/ngx-glide/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

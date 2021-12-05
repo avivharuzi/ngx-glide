@@ -1,6 +1,0 @@
-{
-  "hooks": {
-    "pre-commit": "npm run format:staged && npm run lint",
-    "pre-push": "npm run test:without-watch && npm run test:lib:without-watch"
-  }
-}

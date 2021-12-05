@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "projects": {
+    "ngx-glide": "packages/ngx-glide",
+    "ngx-glide-demo": "apps/ngx-glide-demo",
+    "ngx-glide-demo-e2e": "apps/ngx-glide-demo-e2e"
+  }
+}

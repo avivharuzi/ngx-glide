@@ -1,0 +1,94 @@
+{
+  "projectType": "application",
+  "root": "apps/ngx-glide-demo",
+  "sourceRoot": "apps/ngx-glide-demo/src",
+  "prefix": "ngx-glide-demo",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/ngx-glide-demo",
+        "index": "apps/ngx-glide-demo/src/index.html",
+        "main": "apps/ngx-glide-demo/src/main.ts",
+        "polyfills": "apps/ngx-glide-demo/src/polyfills.ts",
+        "tsConfig": "apps/ngx-glide-demo/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/ngx-glide-demo/src/favicon.ico",
+          "apps/ngx-glide-demo/src/assets"
+        ],
+        "styles": ["apps/ngx-glide-demo/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/ngx-glide-demo/src/environments/environment.ts",
+              "with": "apps/ngx-glide-demo/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "ngx-glide-demo:build:production"
+        },
+        "development": {
+          "browserTarget": "ngx-glide-demo:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "ngx-glide-demo:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/ngx-glide-demo/src/**/*.ts",
+          "apps/ngx-glide-demo/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/ngx-glide-demo"],
+      "options": {
+        "jestConfig": "apps/ngx-glide-demo/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

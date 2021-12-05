@@ -1,0 +1,30 @@
+{
+  "name": "ngx-glide",
+  "version": "13.0.0",
+  "description": "Angular wrapper component of Glide carousel library",
+  "peerDependencies": {
+    "@angular/common": "13.x",
+    "@angular/core": "13.x",
+    "@glidejs/glide": "3.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avivharuzi/ngx-glide.git"
+  },
+  "keywords": [
+    "angular",
+    "library",
+    "glide",
+    "slider",
+    "carousel"
+  ],
+  "author": "Aviv Haruzi <avivharuzi@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/avivharuzi/ngx-glide/issues"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "homepage": "https://github.com/avivharuzi/ngx-glide#readme"
+}
