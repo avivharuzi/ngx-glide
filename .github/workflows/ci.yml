@@ -1,75 +1,107 @@
 name: CI
 
 on:
-  release:
-    types: [ created ]
   push:
-    branches:
-      - main
-  pull_request:
+    branches: [main]
 
 jobs:
-  build:
+  pre-release:
+    name: Pre Release
     runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'pull_request' }}
     steps:
-      - uses: actions/checkout@v2
-        name: Checkout [main]
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@v2
-      - uses: actions/setup-node@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: 16
-      - run: npm ci
-      - run: npx nx affected --target=lint --parallel --max-parallel=2
-      - run: npx nx affected --target=test --parallel --max-parallel=2
-      - run: npx nx affected --target=build --parallel --max-parallel=2
+          node-version: '16.x'
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Build All
+        run: yarn build:all
 
-  pr:
+  release:
+    name: Release
+    needs: pre-release
+    if: ${{ !contains(github.event.head_commit.message, 'skip ci') && !contains(github.event.head_commit.message, 'chore(release)') }}
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' }}
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          persist-credentials: false
           fetch-depth: 0
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@v2
-      - uses: actions/setup-node@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: 16
-      - run: npm ci
-      - run: npx nx affected --target=lint --parallel --max-parallel=2
-      - run: npx nx affected --target=test --parallel --max-parallel=2
-      - run: npx nx affected --target=build --parallel --max-parallel=2
+          node-version: '16.x'
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: yarn release
 
   publish-npm:
-    needs: build
+    name: Publish NPM Package
+    needs: release
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'release' }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm run build:ngx-glide && cd dist/packages/ngx-glide && npm publish --access public && cd -
+          fetch-depth: 0
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Build Packages
+        run: yarn build:ngx-glide
+      - name: Store Package Version
+        run: |
+          NEXT_PACKAGE_VERSION="$(grep '\"version\"' package.json | cut -d '"' -f 4 | head -n 1)"
+          echo "::set-output name=NEXT_PACKAGE_VERSION::$NEXT_PACKAGE_VERSION"
+      - name: Publish Packages
+        run: |
+          for path in ./dist/packages/*; do
+            cd "$path" && npm version "${{ steps.publish-npm.outputs.NEXT_PACKAGE_VERSION }}" --no-git-tag-version --allow-same-version && npm publish --access public && cd -
+          done
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-  deploy:
-    needs: build
+  deploy-demo:
+    name: Deploy Demo
+    needs: pre-release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
-          node-version: 16
-      - run: npm ci
-      - run: npm run build:ngx-glide-demo
+          fetch-depth: 0
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Build Demo
+        run: yarn build:ngx-glide-demo
       - run: cd dist/apps/ngx-glide-demo && cp index.html 404.html && cd -
       - uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}

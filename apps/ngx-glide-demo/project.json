@@ -1,6 +1,5 @@
 {
   "projectType": "application",
-  "root": "apps/ngx-glide-demo",
   "sourceRoot": "apps/ngx-glide-demo/src",
   "prefix": "ngx-glide-demo",
   "targets": {
@@ -76,8 +75,8 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "apps/ngx-glide-demo/src/**/*.ts",
-          "apps/ngx-glide-demo/src/**/*.html"
+          "apps/ngx-glide-demo/**/*.ts",
+          "apps/ngx-glide-demo/**/*.html"
         ]
       }
     },
@@ -85,7 +84,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/ngx-glide-demo"],
       "options": {
-        "jestConfig": "apps/ngx-glide-demo/jest.config.js",
+        "jestConfig": "apps/ngx-glide-demo/jest.config.ts",
         "passWithNoTests": true
       }
     }

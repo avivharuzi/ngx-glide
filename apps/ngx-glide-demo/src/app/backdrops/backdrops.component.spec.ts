@@ -6,13 +6,11 @@ describe('BackdropsComponent', () => {
   let component: BackdropsComponent;
   let fixture: ComponentFixture<BackdropsComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [BackdropsComponent],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [BackdropsComponent],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BackdropsComponent);

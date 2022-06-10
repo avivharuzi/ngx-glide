@@ -3,70 +3,70 @@
     <ng-container *ngIf="backdrops && backdrops.length">
       <ngx-glide
         #ngxGlide
-        [showArrows]="showArrows"
-        [showBullets]="showBullets"
+        [animationDuration]="animationDuration"
+        [animationTimingFunc]="animationTimingFunc"
         [arrowLeftLabel]="arrowLeftLabel"
+        [arrowLeftTemplate]="(showCustomArrows && arrowLeftTemplate) || null"
         [arrowRightLabel]="arrowRightLabel"
-        [type]="type"
-        [startAt]="startAt"
-        [perView]="perView"
+        [arrowRightTemplate]="(showCustomArrows && arrowRightTemplate) || null"
+        [autoplay]="isAutoplay ? autoplay : false"
+        [bound]="bound"
+        [breakpoints]="{ '768': { perView: 1 }, '1200': { perView: 2 } }"
+        [direction]="direction"
+        [dragThreshold]="isDragThreshold ? dragThreshold : false"
         [focusAt]="isCenter ? 'center' : focusAt"
         [gap]="gap"
-        [autoplay]="isAutoplay ? autoplay : false"
         [hoverpause]="hoverpause"
         [keyboard]="keyboard"
-        [bound]="bound"
-        [swipeThreshold]="isSwipeThreshold ? swipeThreshold : false"
-        [dragThreshold]="isDragThreshold ? dragThreshold : false"
+        [listenToEvents]="true"
         [perTouch]="isPerTouch ? perTouch : false"
-        [touchRatio]="touchRatio"
-        [touchAngle]="touchAngle"
-        [animationDuration]="animationDuration"
+        [perView]="perView"
         [rewind]="rewind"
         [rewindDuration]="rewindDuration"
-        [animationTimingFunc]="animationTimingFunc"
-        [direction]="direction"
-        [listenToEvents]="true"
-        [breakpoints]="{ '768': { perView: 1 }, '1200': { perView: 2 } }"
-        [arrowLeftTemplate]="(showCustomArrows && arrowLeftTemplate) || null"
-        [arrowRightTemplate]="(showCustomArrows && arrowRightTemplate) || null"
-        (mountedBefore)="onMountedBefore()"
-        (mountedAfter)="onMountedAfter()"
-        (updated)="onUpdated()"
-        (played)="onPlayed()"
-        (paused)="onPaused()"
-        (buildedBefore)="onBuildedBefore()"
+        [showArrows]="showArrows"
+        [showBullets]="showBullets"
+        [startAt]="startAt"
+        [swipeThreshold]="isSwipeThreshold ? swipeThreshold : false"
+        [touchAngle]="touchAngle"
+        [touchRatio]="touchRatio"
+        [type]="type"
         (buildedAfter)="onBuildedAfter()"
-        (ranBefore)="onRanBefore($event)"
-        (ran)="onRan($event)"
-        (ranAfter)="onRanAfter($event)"
-        (ranOffset)="onRanOffset($event)"
-        (runStarted)="onRunStarted($event)"
-        (runEnded)="onRunEnded($event)"
+        (buildedBefore)="onBuildedBefore()"
+        (mountedAfter)="onMountedAfter()"
+        (mountedBefore)="onMountedBefore()"
         (moved)="onMoved($event)"
         (movedAfter)="onMovedAfter($event)"
+        (paused)="onPaused()"
+        (played)="onPlayed()"
+        (ran)="onRan($event)"
+        (ranAfter)="onRanAfter($event)"
+        (ranBefore)="onRanBefore($event)"
+        (ranOffset)="onRanOffset($event)"
         (resized)="onResized()"
-        (swipeStarted)="onSwipeStarted()"
-        (swipeMoved)="onSwipeMoved()"
+        (runEnded)="onRunEnded($event)"
+        (runStarted)="onRunStarted($event)"
         (swipeEnded)="onSwipeEnded()"
+        (swipeMoved)="onSwipeMoved()"
+        (swipeStarted)="onSwipeStarted()"
         (translateJumped)="onTranslateJumped($event)"
+        (updated)="onUpdated()"
       >
-        <div class="backdrop" *ngFor="let backdrop of backdrops">
+        <div *ngFor="let backdrop of backdrops" class="backdrop">
           <img
-            [src]="backdrop + 1 | img: 'jpeg':'backdrops'"
             [alt]="'backdrop image ' + backdrop"
+            [src]="backdrop + 1 | img: 'jpeg':'backdrops'"
           />
         </div>
       </ngx-glide>
     </ng-container>
     <ng-template #arrowLeftTemplate>
       <div class="custom-arrow custom-arrow-left">
-        <button mat-raised-button color="accent">👈 CUSTOM LEFT</button>
+        <button color="accent" mat-raised-button>👈 CUSTOM LEFT</button>
       </div>
     </ng-template>
     <ng-template #arrowRightTemplate>
       <div class="custom-arrow custom-arrow-right">
-        <button mat-raised-button color="accent">CUSTOM RIGHT 👉</button>
+        <button color="accent" mat-raised-button>CUSTOM RIGHT 👉</button>
       </div>
     </ng-template>
     <ng-container *ngIf="isLoading">
@@ -123,10 +123,10 @@
       <div class="edit-backdrop">
         <mat-form-field>
           <input
-            matInput
             type="number"
-            placeholder="startAt"
+            matInput
             min="0"
+            placeholder="startAt"
             [max]="backdrops.length - 1"
             [(ngModel)]="startAt"
           />
@@ -135,10 +135,10 @@
       <div class="edit-backdrop">
         <mat-form-field>
           <input
-            matInput
             type="number"
-            placeholder="perView"
+            matInput
             min="1"
+            placeholder="perView"
             [max]="backdrops.length"
             [(ngModel)]="perView"
           />
@@ -148,12 +148,12 @@
         <mat-checkbox [(ngModel)]="isCenter"> center </mat-checkbox>
         <mat-form-field>
           <input
-            matInput
             type="number"
-            placeholder="focusAt"
+            matInput
             min="0"
-            [max]="perView - 1"
+            placeholder="focusAt"
             [disabled]="isCenter"
+            [max]="perView - 1"
             [(ngModel)]="focusAt"
           />
         </mat-form-field>
@@ -161,10 +161,10 @@
       <div class="edit-backdrop">
         <mat-form-field>
           <input
-            matInput
             type="number"
-            placeholder="gap"
+            matInput
             min="0"
+            placeholder="gap"
             step="10"
             [(ngModel)]="gap"
           />
@@ -176,10 +176,10 @@
         </mat-slide-toggle>
         <mat-form-field>
           <input
-            matInput
             type="number"
-            placeholder="autoplay"
+            matInput
             min="0"
+            placeholder="autoplay"
             step="1000"
             [disabled]="!isAutoplay"
             [(ngModel)]="autoplay"
@@ -203,10 +203,10 @@
         </mat-slide-toggle>
         <mat-form-field>
           <input
-            matInput
             type="number"
-            placeholder="swipeThreshold"
+            matInput
             min="0"
+            placeholder="swipeThreshold"
             step="10"
             [disabled]="!isSwipeThreshold"
             [(ngModel)]="swipeThreshold"
@@ -221,10 +221,10 @@
         </mat-slide-toggle>
         <mat-form-field>
           <input
-            matInput
             type="number"
-            placeholder="dragThreshold"
+            matInput
             min="0"
+            placeholder="dragThreshold"
             step="10"
             [disabled]="!isDragThreshold"
             [(ngModel)]="dragThreshold"
@@ -237,11 +237,11 @@
         </mat-slide-toggle>
         <mat-form-field>
           <input
-            matInput
             type="number"
-            placeholder="perTouch"
-            min="0"
+            matInput
             max="5"
+            min="0"
+            placeholder="perTouch"
             [disabled]="!isPerTouch"
             [(ngModel)]="perTouch"
           />
@@ -250,11 +250,11 @@
       <div class="edit-backdrop">
         <mat-form-field>
           <input
-            matInput
             type="number"
-            placeholder="touchRatio"
-            min="0.1"
+            matInput
             max="1"
+            min="0.1"
+            placeholder="touchRatio"
             step="0.1"
             [(ngModel)]="touchRatio"
           />
@@ -263,11 +263,11 @@
       <div class="edit-backdrop">
         <mat-form-field>
           <input
-            matInput
             type="number"
-            placeholder="touchAngle"
-            min="0"
+            matInput
             max="90"
+            min="0"
+            placeholder="touchAngle"
             step="5"
             [(ngModel)]="touchAngle"
           />
@@ -276,11 +276,11 @@
       <div class="edit-backdrop">
         <mat-form-field>
           <input
-            matInput
             type="number"
-            placeholder="animationDuration"
-            min="100"
+            matInput
             max="4000"
+            min="100"
+            placeholder="animationDuration"
             step="100"
             [(ngModel)]="animationDuration"
           />
@@ -292,11 +292,11 @@
       <div class="edit-backdrop">
         <mat-form-field>
           <input
-            matInput
             type="number"
-            placeholder="rewindDuration"
-            min="100"
+            matInput
             max="4000"
+            min="100"
+            placeholder="rewindDuration"
             step="100"
             [(ngModel)]="rewindDuration"
           />
@@ -330,10 +330,10 @@
         </mat-form-field>
       </div>
       <div class="edit-backdrop">
-        <button mat-raised-button color="primary" (click)="reset()">
+        <button color="primary" mat-raised-button (click)="reset()">
           RESET
         </button>
-        <button mat-raised-button color="primary" (click)="recreate()">
+        <button color="primary" mat-raised-button (click)="recreate()">
           RECREATE
         </button>
       </div>

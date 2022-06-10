@@ -1,6 +1,6 @@
-<div class="glide" #glideEl>
+<div #glideEl class="glide">
   <div class="glide__track" data-glide-el="track">
-    <div class="glide__slides" #glideSlidesEl>
+    <div #glideSlidesEl class="glide__slides">
       <ng-content></ng-content>
     </div>
   </div>
@@ -43,8 +43,8 @@
   >
     <ng-container *ngIf="glideBullets">
       <button
-        class="glide__bullet"
         *ngFor="let glideBullet of glideBullets"
+        class="glide__bullet"
         [attr.data-glide-dir]="'=' + glideBullet"
       ></button>
     </ng-container>

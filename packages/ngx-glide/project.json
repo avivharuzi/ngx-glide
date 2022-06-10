@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "packages/ngx-glide",
   "sourceRoot": "packages/ngx-glide/src",
   "prefix": "ngx-glide",
   "targets": {
@@ -24,7 +23,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/packages/ngx-glide"],
       "options": {
-        "jestConfig": "packages/ngx-glide/jest.config.js",
+        "jestConfig": "packages/ngx-glide/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -32,8 +31,8 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "packages/ngx-glide/src/**/*.ts",
-          "packages/ngx-glide/src/**/*.html"
+          "packages/ngx-glide/**/*.ts",
+          "packages/ngx-glide/**/*.html"
         ]
       }
     }

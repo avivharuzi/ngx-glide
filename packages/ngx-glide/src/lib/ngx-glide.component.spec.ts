@@ -6,13 +6,11 @@ describe('NgxGlideComponent', () => {
   let component: NgxGlideComponent;
   let fixture: ComponentFixture<NgxGlideComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [NgxGlideComponent],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [NgxGlideComponent],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NgxGlideComponent);

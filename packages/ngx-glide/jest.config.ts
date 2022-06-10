@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'ngx-glide-demo',
+/* eslint-disable */
+export default {
+  displayName: 'ngx-glide',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +9,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../coverage/apps/ngx-glide-demo',
+  coverageDirectory: '../../coverage/packages/ngx-glide',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },
