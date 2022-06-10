@@ -71,13 +71,15 @@ jobs:
       - name: Build Packages
         run: yarn build:ngx-glide
       - name: Store Package Version
+        id: storePackageVersion
         run: |
           NEXT_PACKAGE_VERSION="$(grep '\"version\"' package.json | cut -d '"' -f 4 | head -n 1)"
-          echo "::set-output name=NEXT_PACKAGE_VERSION::$NEXT_PACKAGE_VERSION"
+          echo "::add-mask::$NEXT_PACKAGE_VERSION"
+          echo "::set-output name=nextPackageVersion::$NEXT_PACKAGE_VERSION"
       - name: Publish Packages
         run: |
           for path in ./dist/packages/*; do
-            cd "$path" && npm version "${{ steps.publish-npm.outputs.NEXT_PACKAGE_VERSION }}" --no-git-tag-version --allow-same-version && npm publish --access public && cd -
+            cd "$path" && npm version "${{ steps.storePackageVersion.outputs.nextPackageVersion }}" --no-git-tag-version --allow-same-version && npm publish --access public && cd -
           done
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
