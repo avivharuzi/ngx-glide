@@ -19,10 +19,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16.x'
+          cache: 'yarn'
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build All
-        run: npm run build:all
+        run: yarn build:all
 
   release:
     name: Release
@@ -40,12 +41,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16.x'
+          cache: 'yarn'
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run release
+        run: yarn release
 
   publish-npm:
     name: Publish NPM Package
@@ -62,13 +64,14 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16.x'
+          cache: 'yarn'
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build Packages
-        run: npm run build:ngx-glide
+        run: yarn build:ngx-glide
       - name: Store Package Version
         run: |
-          NEXT_PACKAGE_VERSION="$(npm run current-version)"
+          NEXT_PACKAGE_VERSION="$(grep '\"version\"' package.json | cut -d '"' -f 4 | head -n 1)"
           echo "::set-output name=NEXT_PACKAGE_VERSION::$NEXT_PACKAGE_VERSION"
       - name: Publish Packages
         run: |
@@ -93,10 +96,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16.x'
+          cache: 'yarn'
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build Demo
-        run: npm run build:ngx-glide-demo
+        run: yarn build:ngx-glide-demo
       - run: cd dist/apps/ngx-glide-demo && cp index.html 404.html && cd -
       - uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}

@@ -14,8 +14,7 @@
     "build:all": "nx run-many --target=build --all --parallel --maxParallel=3",
     "affected:lint": "nx affected --target=lint --parallel --maxParallel=3",
     "affected:test": "nx affected --target=test --parallel --maxParallel=3",
-    "affected:build": "nx affected --target=build --parallel --maxParallel=3",
-    "current-version": "grep '\"version\"' package.json | cut -d '\"' -f 4 | head -n 1"
+    "affected:build": "nx affected --target=build --parallel --maxParallel=3"
   },
   "private": true,
   "dependencies": {
