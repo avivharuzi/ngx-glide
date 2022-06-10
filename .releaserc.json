@@ -1,0 +1,52 @@
+{
+  "branches": ["+([0-9])?(.{+([0-9]),x}).x", "main"],
+  "tagFormat": "${version}",
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "angular"
+      }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "angular"
+      }
+    ],
+    "@semantic-release/changelog",
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "npx --no-install prettier --write CHANGELOG.md"
+      }
+    ],
+    [
+      "@semantic-release/npm",
+      {
+        "npmPublish": false
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "./CHANGELOG.md",
+          "./package.json",
+          "./package-lock.json",
+          "./yarn-lock.yaml"
+        ],
+        "message": "chore(release): ${nextRelease.version}"
+      }
+    ],
+    [
+      "@semantic-release/github",
+      {
+        "assets": ["dist/**"],
+        "failComment": false,
+        "releasedLabels": false,
+        "successComment": false
+      }
+    ]
+  ]
+}
