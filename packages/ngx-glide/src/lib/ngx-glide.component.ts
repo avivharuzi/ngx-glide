@@ -166,7 +166,7 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
       if (!Object.prototype.hasOwnProperty.call(defaultSettings, key)) {
         continue;
       }
-      const change: SimpleChange = changes[key];
+      const change = changes[key] as SimpleChange;
       if (change.previousValue !== change.currentValue) {
         settings[key] = change.currentValue;
       }
@@ -199,6 +199,7 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
     return this.glide && this.glide.index;
   }
 
+  // noinspection JSUnusedGlobalSymbols
   getSettings(): Settings {
     return this.glide && this.glide.settings;
   }
@@ -255,6 +256,7 @@ export class NgxGlideComponent implements OnChanges, AfterViewInit, OnDestroy {
     }
   }
 
+  // noinspection JSUnusedGlobalSymbols
   disable(): void {
     if (this.glide) {
       this.glide.disable();
