@@ -1,3 +1,4 @@
+import { isPlatformBrowser } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -16,7 +17,6 @@ import {
   TemplateRef,
   ViewChild,
 } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore

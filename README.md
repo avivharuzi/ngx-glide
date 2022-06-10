@@ -15,6 +15,7 @@ Versions compatibility list:
 
 | ngx-glide | Angular       | @glidejs/glide |
 | --------- | ------------- | -------------- |
+| 14.x.x    | 14.x.x        | 3.x.x          |
 | 13.x.x    | 13.x.x        | 3.x.x          |
 | 12.x.x    | 12.x.x        | 3.x.x          |
 | 11.x.x    | 11.x.x        | 3.x.x          |

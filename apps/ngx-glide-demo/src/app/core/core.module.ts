@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 
-import { HeaderComponent } from './components/header/header.component';
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [HeaderComponent],
