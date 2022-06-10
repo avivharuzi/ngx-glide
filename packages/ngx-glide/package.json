@@ -5,7 +5,7 @@
   "peerDependencies": {
     "@angular/common": "14.x",
     "@angular/core": "14.x",
-    "@glidejs/glide": "14.x"
+    "@glidejs/glide": "3.x"
   },
   "repository": {
     "type": "git",
