@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: 16
       - name: Install dependencies
-        run: npm ci
+        run: npm ci -f
       - name: Lint
         run: npm run affected:lint
       - name: Test
