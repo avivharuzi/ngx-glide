@@ -65,6 +65,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
           cache: 'yarn'
       - name: Install dependencies
         run: yarn install --frozen-lockfile
@@ -76,12 +77,12 @@ jobs:
           NEXT_PACKAGE_VERSION="$(grep '\"version\"' package.json | cut -d '"' -f 4 | head -n 1)"
           echo "::set-output name=nextPackageVersion::$NEXT_PACKAGE_VERSION"
       - name: Publish Packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           for path in ./dist/packages/*; do
             cd "$path" && npm version "${{ steps.storePackageVersion.outputs.nextPackageVersion }}" --no-git-tag-version --allow-same-version && npm publish --access public && cd -
           done
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   deploy-demo:
     name: Deploy Demo
