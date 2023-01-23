@@ -54,7 +54,7 @@
         <div *ngFor="let backdrop of backdrops" class="backdrop">
           <img
             [alt]="'backdrop image ' + backdrop"
-            [src]="backdrop + 1 | img: 'jpeg':'backdrops'"
+            [src]="backdrop + 1 | img : 'jpeg' : 'backdrops'"
           />
         </div>
       </ngx-glide>
@@ -95,20 +95,14 @@
       </div>
       <div class="edit-backdrop">
         <mat-form-field>
-          <input
-            matInput
-            placeholder="arrowLeftLabel"
-            [(ngModel)]="arrowLeftLabel"
-          />
+          <mat-label>arrowLeftLabel</mat-label>
+          <input matInput [(ngModel)]="arrowLeftLabel" />
         </mat-form-field>
       </div>
       <div class="edit-backdrop">
         <mat-form-field>
-          <input
-            matInput
-            placeholder="arrowRightLabel"
-            [(ngModel)]="arrowRightLabel"
-          />
+          <mat-label>arrowRightLabel</mat-label>
+          <input matInput [(ngModel)]="arrowRightLabel" />
         </mat-form-field>
       </div>
       <div class="edit-backdrop">
@@ -122,11 +116,11 @@
       </div>
       <div class="edit-backdrop">
         <mat-form-field>
+          <mat-label>startAt</mat-label>
           <input
             type="number"
             matInput
             min="0"
-            placeholder="startAt"
             [max]="backdrops.length - 1"
             [(ngModel)]="startAt"
           />
@@ -134,11 +128,11 @@
       </div>
       <div class="edit-backdrop">
         <mat-form-field>
+          <mat-label>perView</mat-label>
           <input
             type="number"
             matInput
             min="1"
-            placeholder="perView"
             [max]="backdrops.length"
             [(ngModel)]="perView"
           />
@@ -147,11 +141,11 @@
       <div class="edit-backdrop">
         <mat-checkbox [(ngModel)]="isCenter"> center </mat-checkbox>
         <mat-form-field>
+          <mat-label>focusAt</mat-label>
           <input
             type="number"
             matInput
             min="0"
-            placeholder="focusAt"
             [disabled]="isCenter"
             [max]="perView - 1"
             [(ngModel)]="focusAt"
@@ -160,14 +154,8 @@
       </div>
       <div class="edit-backdrop">
         <mat-form-field>
-          <input
-            type="number"
-            matInput
-            min="0"
-            placeholder="gap"
-            step="10"
-            [(ngModel)]="gap"
-          />
+          <mat-label>gap</mat-label>
+          <input type="number" matInput min="0" step="10" [(ngModel)]="gap" />
         </mat-form-field>
       </div>
       <div class="edit-backdrop">
@@ -175,11 +163,11 @@
           >autoplay
         </mat-slide-toggle>
         <mat-form-field>
+          <mat-label>autoplay</mat-label>
           <input
             type="number"
             matInput
             min="0"
-            placeholder="autoplay"
             step="1000"
             [disabled]="!isAutoplay"
             [(ngModel)]="autoplay"
@@ -202,11 +190,11 @@
           >swipeThreshold
         </mat-slide-toggle>
         <mat-form-field>
+          <mat-label>swipeThreshold</mat-label>
           <input
             type="number"
             matInput
             min="0"
-            placeholder="swipeThreshold"
             step="10"
             [disabled]="!isSwipeThreshold"
             [(ngModel)]="swipeThreshold"
@@ -220,11 +208,11 @@
           >dragThreshold
         </mat-slide-toggle>
         <mat-form-field>
+          <mat-label>dragThreshold</mat-label>
           <input
             type="number"
             matInput
             min="0"
-            placeholder="dragThreshold"
             step="10"
             [disabled]="!isDragThreshold"
             [(ngModel)]="dragThreshold"
@@ -236,12 +224,12 @@
           >perTouch
         </mat-slide-toggle>
         <mat-form-field>
+          <mat-label>perTouch</mat-label>
           <input
             type="number"
             matInput
             max="5"
             min="0"
-            placeholder="perTouch"
             [disabled]="!isPerTouch"
             [(ngModel)]="perTouch"
           />
@@ -249,12 +237,12 @@
       </div>
       <div class="edit-backdrop">
         <mat-form-field>
+          <mat-label>touchRatio</mat-label>
           <input
             type="number"
             matInput
             max="1"
             min="0.1"
-            placeholder="touchRatio"
             step="0.1"
             [(ngModel)]="touchRatio"
           />
@@ -262,12 +250,12 @@
       </div>
       <div class="edit-backdrop">
         <mat-form-field>
+          <mat-label>touchAngle</mat-label>
           <input
             type="number"
             matInput
             max="90"
             min="0"
-            placeholder="touchAngle"
             step="5"
             [(ngModel)]="touchAngle"
           />
@@ -275,12 +263,12 @@
       </div>
       <div class="edit-backdrop">
         <mat-form-field>
+          <mat-label>animationDuration</mat-label>
           <input
             type="number"
             matInput
             max="4000"
             min="100"
-            placeholder="animationDuration"
             step="100"
             [(ngModel)]="animationDuration"
           />
@@ -291,12 +279,12 @@
       </div>
       <div class="edit-backdrop">
         <mat-form-field>
+          <mat-label>rewindDuration</mat-label>
           <input
             type="number"
             matInput
             max="4000"
             min="100"
-            placeholder="rewindDuration"
             step="100"
             [(ngModel)]="rewindDuration"
           />

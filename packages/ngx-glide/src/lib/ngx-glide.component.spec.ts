@@ -8,7 +8,7 @@ describe('NgxGlideComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [NgxGlideComponent],
+      imports: [NgxGlideComponent],
     }).compileComponents();
   }));
 

@@ -1,4 +1,4 @@
-import { Settings } from './settings.interface';
+import { Settings } from './settings';
 
 export const defaultSettings: Settings = {
   type: 'slider',

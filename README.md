@@ -15,6 +15,7 @@ Versions compatibility list:
 
 | ngx-glide | Angular       | @glidejs/glide |
 | --------- | ------------- | -------------- |
+| 15.x.x    | 15.x.x        | 3.x.x          |
 | 14.x.x    | 14.x.x        | 3.x.x          |
 | 13.x.x    | 13.x.x        | 3.x.x          |
 | 12.x.x    | 12.x.x        | 3.x.x          |
@@ -47,8 +48,8 @@ Add scss files to the `styles` section of your `angular.json`:
 You can either import the `styles` files into main scss file:
 
 ```scss
-@import '~@glidejs/glide/src/assets/sass/glide.core';
-@import '~@glidejs/glide/src/assets/sass/glide.theme';
+@use '@glidejs/glide/src/assets/sass/glide.core' as *;
+@use '@glidejs/glide/src/assets/sass/glide.theme' as *;
 ```
 
 Import `NgxGlideModule` into the current module's imports:
@@ -60,6 +61,19 @@ imports: [
   // ...
   NgxGlideModule,
 ],
+```
+
+You can also import `NgxGlideComponent` as standalone component:
+
+```ts
+import { NgxGlideComponent } from 'ngx-glide';
+
+@Component({
+  standalone: true,
+  imports: [NgxGlideComponent],
+  // ...
+})
+export class MyComponent {}
 ```
 
 Use in your components (add html items into the ngx-glide component):

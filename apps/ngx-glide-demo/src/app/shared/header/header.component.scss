@@ -1,0 +1,12 @@
+mat-toolbar-row {
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    span {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+  }
+}
