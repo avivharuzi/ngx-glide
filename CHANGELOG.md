@@ -1,3 +1,17 @@
+# [15.0.0](https://github.com/avivharuzi/ngx-glide/compare/14.0.0...15.0.0) (2023-01-23)
+
+### Bug Fixes
+
+- 🐛 husky pre-push script ([58c5372](https://github.com/avivharuzi/ngx-glide/commit/58c537288761928b97135405a2fa64acbd680c1c))
+
+### chore
+
+- 🤖 update to angular 15 ([770ff9b](https://github.com/avivharuzi/ngx-glide/commit/770ff9be8aaad4ae98db57a2fe9827e74a8cc9dc))
+
+### BREAKING CHANGES
+
+- 🧨 update to angular 15
+
 # [14.0.0](https://github.com/avivharuzi/ngx-glide/compare/13.0.0...14.0.0) (2022-06-11)
 
 ### Bug Fixes
