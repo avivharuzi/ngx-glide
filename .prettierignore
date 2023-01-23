@@ -1,8 +1,8 @@
 # Add files here to ignore them from prettier formatting
 
 # compiled output
-/dist
-/tmp
+dist
+tmp
 /out-tsc
 
 # dependencies

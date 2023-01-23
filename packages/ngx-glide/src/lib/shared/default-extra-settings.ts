@@ -1,4 +1,4 @@
-import { ExtraSettings } from './extra-settings.interface';
+import { ExtraSettings } from './extra-settings';
 
 export const defaultExtraSettings: ExtraSettings = {
   showArrows: true,

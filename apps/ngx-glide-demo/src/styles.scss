@@ -1,7 +1,7 @@
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@use '@angular/material/prebuilt-themes/indigo-pink';
 
-@import '~@glidejs/glide/src/assets/sass/glide.core';
-@import '~@glidejs/glide/src/assets/sass/glide.theme';
+@use '@glidejs/glide/src/assets/sass/glide.core' as *;
+@use '@glidejs/glide/src/assets/sass/glide.theme' as *;
 
 html,
 body {

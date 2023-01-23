@@ -18,13 +18,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16.x'
-          cache: 'yarn'
+          node-version: '18.x'
+          cache: 'npm'
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm install --frozen-lockfile
       - name: Lint
-        run: yarn affected:lint
+        run: npm run affected:lint
       - name: Test
-        run: yarn affected:test
+        run: npm run affected:test
       - name: Build
-        run: yarn affected:build
+        run: npm run affected:build

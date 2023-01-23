@@ -1,4 +1,9 @@
-import { isPlatformBrowser } from '@angular/common';
+import {
+  isPlatformBrowser,
+  NgForOf,
+  NgIf,
+  NgTemplateOutlet,
+} from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -22,12 +27,12 @@ import {
 // @ts-ignore
 import Glide from '@glidejs/glide';
 
-import { defaultExtraSettings } from './shared/default-extra-settings';
-import { defaultSettings } from './shared/default-settings';
-import { Settings } from './shared/settings.interface';
+import { defaultExtraSettings, defaultSettings, Settings } from './shared';
 
 // noinspection TypeScriptFieldCanBeMadeReadonly,DuplicatedCode
 @Component({
+  standalone: true,
+  imports: [NgIf, NgForOf, NgTemplateOutlet],
   selector: 'ngx-glide',
   templateUrl: './ngx-glide.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
