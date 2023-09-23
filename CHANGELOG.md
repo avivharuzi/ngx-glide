@@ -1,3 +1,13 @@
+# [16.0.0](https://github.com/avivharuzi/ngx-glide/compare/15.0.0...16.0.0) (2023-09-23)
+
+### chore
+
+- 🤖 update to angular 16 ([cd6368c](https://github.com/avivharuzi/ngx-glide/commit/cd6368cfc84f2a9a3564882a6997577e6488dd62))
+
+### BREAKING CHANGES
+
+- 🧨 update to angular 16
+
 # [15.0.0](https://github.com/avivharuzi/ngx-glide/compare/14.0.0...15.0.0) (2023-01-23)
 
 ### Bug Fixes
