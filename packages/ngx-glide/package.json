@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "description": "Angular wrapper component of Glide carousel library",
   "peerDependencies": {
-    "@angular/common": ">=15.x",
-    "@angular/core": ">=15.x",
+    "@angular/common": ">=16.x",
+    "@angular/core": ">=16.x",
     "@glidejs/glide": "3.x"
   },
   "repository": {
