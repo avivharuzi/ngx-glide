@@ -1,12 +1,7 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "ngx-glide",
-  "affected": {
-    "defaultBase": "main"
-  },
   "cli": {
-    "packageManager": "npm",
-    "defaultCollection": "@nrwl/angular"
+    "packageManager": "npm"
   },
   "implicitDependencies": {
     "package.json": {
@@ -15,29 +10,33 @@
     },
     ".eslintrc.json": "*"
   },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
-      }
-    }
-  },
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "inputs": ["production", "^production"],
+      "cache": true
     },
-    "test": {
-      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
+    "@nx/jest:jest": {
+      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
+      "cache": true,
+      "options": {
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
     },
-    "lint": {
+    "@nx/eslint:lint": {
       "inputs": [
         "default",
         "{workspaceRoot}/.eslintrc.json",
         "{workspaceRoot}/.eslintignore",
         "{workspaceRoot}/eslint.config.js"
-      ]
+      ],
+      "cache": true
     }
   },
   "workspaceLayout": {
@@ -73,5 +72,7 @@
       "style": "scss"
     }
   },
-  "defaultProject": "ngx-glide"
+  "defaultProject": "ngx-glide",
+  "useInferencePlugins": false,
+  "defaultBase": "main"
 }
